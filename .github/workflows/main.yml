@@ -1,59 +1,180 @@
-# 工作流的名称，会显示在 Actions 页面
-name: Build Cordova Android (Debug)
+name: Build Pure HTML Version
 
-# 定义什么情况下触发这个工作流
 on:
-  # 2. 允许你在 Actions 页面手动点击按钮来运行
   workflow_dispatch:
 
-# 定义具体要执行的任务
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   build:
-    # 指定任务运行在什么系统上，这里使用最新的 Ubuntu 系统
     runs-on: ubuntu-latest
-
-    # 定义任务的具体步骤
+    
     steps:
-    # 第1步：把你的仓库代码下载到虚拟机里 (已更新到 v4)
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    # 第2步：安装 Node.js 环境 (已更新到 v4)
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18' # 使用 Node.js 版本 18
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-    # 第3步：安装 Java 环境 (已更新到 v4)
-    - name: Setup Java
-      uses: actions/setup-java@v4
-      with:
-        distribution: 'zulu'
-        java-version: '17' # Cordova 通常使用 Java 11
+      - name: Get version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
 
-    # 第4步：安装 Cordova 命令行工具
-    - name: Install Cordova
-      run: npm install -g cordova
+      - name: Create dist directory
+        run: mkdir -p dist
 
-    # 第5步：安装项目依赖 (比如你在项目里用到的各种插件)
-    - name: Install Dependencies
-      run: npm install
+      - name: Process HTML for browser
+        run: |
+          # 复制 index.html 到 dist 目录
+          cp src/index.html dist/index.html
+          
+          # 移除 cordova.js 引用
+          sed -i 's/<script src="cordova.js"><\/script>//g' dist/index.html
+          
+          # 更新版本号
+          sed -i "s/版本: [0-9.]\+/版本: ${{ steps.get_version.outputs.VERSION }}/g" dist/index.html
+          
+          # 复制字体文件
+          mkdir -p dist/fonts
+          if [ -d "src/fonts" ]; then
+            cp -r src/fonts/* dist/fonts/
+          fi
+          
+          # 复制图标
+          if [ -f "src/icon.png" ]; then
+            cp src/icon.png dist/
+          fi
 
-    # 第6步：为项目添加 Android 平台
-    - name: Add Android Platform
-      run: cordova platform add android
+      - name: Create PWA manifest
+        run: |
+          cat > dist/manifest.json << 'EOF'
+          {
+            "name": "高二轮词酱",
+            "short_name": "斩词酱",
+            "description": "以互动的方式快速背完二轮1500单词",
+            "start_url": "/index.html",
+            "display": "standalone",
+            "background_color": "#fef7ff",
+            "theme_color": "#3f51b5",
+            "icons": [
+              {
+                "src": "icon.png",
+                "sizes": "512x512",
+                "type": "image/png"
+              }
+            ]
+          }
+          EOF
 
-    # 第7步：执行打包命令，生成 debug.apk
-    - name: Build Debug APK
-      run: cordova build android
+      - name: Create service worker
+        run: |
+          cat > dist/sw.js << 'EOF'
+          const CACHE_NAME = 'wordcards-v1';
+          const ASSETS = [
+            '/',
+            '/index.html',
+            '/manifest.json',
+            '/icon.png',
+            '/fonts/noto-sans-sc-v38-chinese-simplified-regular.woff2',
+            '/fonts/noto-sans-sc-v38-chinese-simplified-500.woff2',
+            '/fonts/noto-sans-sc-v38-chinese-simplified-700.woff2',
+            '/fonts/roboto-v48-latin-regular.woff2',
+            '/fonts/roboto-v48-latin-500.woff2',
+            '/fonts/roboto-v48-latin-700.woff2'
+          ];
 
-    # 第8步：上传打包好的 APK 文件，方便你下载 (已从 v3 更新到 v4)
-    - name: Upload Debug APK
-      uses: actions/upload-artifact@v4
-      with:
-        # 这个是上传后你下载的压缩包的名字
-        name: debug-apk
-        # 这是要上传的文件的路径，debug.apk 默认就在这里
-        path: platforms/android/app/build/outputs/apk/debug/app-debug.apk
-        # v4 版本建议添加 retention-days，设置产物保留天数
-        retention-days: 5
+          self.addEventListener('install', (e) => {
+            e.waitUntil(
+              caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+            );
+          });
+
+          self.addEventListener('fetch', (e) => {
+            e.respondWith(
+              caches.match(e.request).then((response) => response || fetch(e.request))
+            );
+          });
+          EOF
+
+      - name: Add PWA links to HTML
+        run: |
+          # 在 </head> 前添加 PWA 相关标签
+          sed -i 's|</head>|<link rel="manifest" href="/manifest.json">\n<meta name="theme-color" content="#3f51b5">\n<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js")}</script></head>|g' dist/index.html
+
+      - name: Create README
+        run: |
+          cat > dist/README.md << EOF
+          # 高考斩词酱 - 浏览器版本
+
+          ## 使用方法
+          1. 直接打开 index.html 文件
+          2. 或部署到任何静态网站托管服务
+
+          ## 功能说明
+          - ✅ 单词学习、复习、测试
+          - ✅ 错题本管理
+          - ✅ 学习进度统计
+          - ✅ 数据导出/导入
+          - ✅ 深色/浅色主题
+          - ⚠️ 语音朗读需要浏览器支持
+          - ⚠️ 更新检测需要网络连接
+
+          ## 版本
+          ${{ steps.get_version.outputs.VERSION }}
+
+          ## 构建时间
+          $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          EOF
+
+      - name: Create ZIP archive
+        run: |
+          cd dist
+          zip -r ../gaokao-zhancijiang-browser-${{ steps.get_version.outputs.VERSION }}.zip .
+          cd ..
+
+      - name: Upload to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            gaokao-zhancijiang-browser-${{ steps.get_version.outputs.VERSION }}.zip
+          generate_release_notes: true
+          make_latest: true
+
+      - name: Setup Pages
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/configure-pages@v4
+
+      - name: Upload Pages artifact
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/deploy-pages@v4
+
+  notify:
+    needs: build
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: Build Status
+        run: |
+          if [ "${{ needs.build.result }}" == "success" ]; then
+            echo "✅ 构建成功！"
+            echo "📦 下载链接: https://github.com/${{ github.repository }}/releases"
+            echo "🌐 在线访问: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          else
+            echo "❌ 构建失败，请检查日志"
+            exit 1
+          fi
