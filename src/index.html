@@ -2526,16 +2526,16 @@ zone	[zəʊn]	n.	地区，地带；区域;
                 }
             });
 
-            // 步骤 3: 更新原生状态栏的颜色 (如果插件可用)
-            if (window.StatusBar) {
-                if (theme === 'dark') {
-                    StatusBar.backgroundColorByHexString("#1c1b1f"); // 深色背景
-                    StatusBar.styleLightContent(); // 亮色文字/图标
-                } else {
-                    StatusBar.backgroundColorByHexString("#fef7ff"); // 浅色背景
-                    StatusBar.styleDefault(); // 深色文字/图标
-                }
-            }
+		    // 只在 Cordova 环境下设置状态栏
+		    if (isCordova() && window.StatusBar) {
+		        if (theme === 'dark') {
+		            StatusBar.backgroundColorByHexString("#1c1b1f");
+		            StatusBar.styleLightContent();
+		        } else {
+		            StatusBar.backgroundColorByHexString("#fef7ff");
+		            StatusBar.styleDefault();
+		        }
+		    }
         };
 
 
@@ -2664,32 +2664,27 @@ zone	[zəʊn]	n.	地区，地带；区域;
 		 * 检查应用更新 (每次启动都提醒)
 		 */
 		const checkForUpdates = async () => {
-			if (!window.cordova || !window.cordova.getAppVersion) {
-				console.log("非 Cordova 环境或插件未加载，跳过更新检查。");
-				return;
-			}
-
-			try {
-				const currentVersion = await cordova.getAppVersion.getVersionNumber();
-				const response = await fetch(GITHUB_API_URL);
-				if (!response.ok) {
-					throw new Error(`GitHub API 请求失败: ${response.status}`);
-				}
-				const latestRelease = await response.json();
-				const latestVersion = latestRelease.tag_name.replace(/^v/, '');
-				
-				console.log(`当前版本: ${currentVersion}, 最新版本: ${latestVersion}`);
-
-				if (isNewerVersion(latestVersion, currentVersion)) {
-					latestReleaseInfo = {
-						version: latestVersion,
-						url: latestRelease.html_url
-					};
-					showUpdatePrompt();
-				}
-			} catch (error) {
-				console.error("更新检查失败:", error);
-			}
+		    // 浏览器环境也检查更新
+		    try {
+		        const response = await fetch(GITHUB_API_URL);
+		        if (!response.ok) {
+		            throw new Error(`GitHub API 请求失败: ${response.status}`);
+		        }
+		        const latestRelease = await response.json();
+		        const latestVersion = latestRelease.tag_name.replace(/^v/, '');
+		        const currentVersion = '1.4.0'; // 从 package.json 或 config.xml 获取
+		        
+		        console.log(`当前版本: ${currentVersion}, 最新版本: ${latestVersion}`);
+		        if (isNewerVersion(latestVersion, currentVersion)) {
+		            latestReleaseInfo = {
+		                version: latestVersion,
+		                url: latestRelease.html_url
+		            };
+		            showUpdatePrompt();
+		        }
+		    } catch (error) {
+		        console.error("更新检查失败:", error);
+		    }
 		};
 
 		/**
@@ -2739,91 +2734,31 @@ zone	[zəʊn]	n.	地区，地带；区域;
         const closeSettingsModal = () => dom.settingsModal.classList.remove('active');
         const startTimeTracker = () => { const t = new Date().toISOString().split('T')[0]; let d = JSON.parse(localStorage.getItem(TIME_TRACKER_DB_NAME) || '{}'); if (d.date !== t) d = { date: t, totalTime: 0 }; if (timeTrackingInterval) clearInterval(timeTrackingInterval); timeTrackingInterval = setInterval(() => { d.totalTime += 1; localStorage.setItem(TIME_TRACKER_DB_NAME, JSON.stringify(d)); }, 1000); };
       
-		/**
-		 * [最终理想版] 导出数据函数，创建文件后调用原生分享界面。
-		 */
+		// 修改 exportData 函数
 		const exportData = async () => {
-			if (!appData) {
-				showModal("没有数据", "没有可导出的数据！", "icon-sentiment-dissatisfied");
-				return;
-			}
-
-			// 浏览器环境下的回退方案保持不变
-			if (!window.cordova || !window.resolveLocalFileSystemURL) {
-				console.log("非 Cordova 环境，使用浏览器下载方法。");
-				// ... (这部分代码无需改动，为了简洁省略)
-				try {
-					const dataStr = JSON.stringify(appData, null, 2);
-					const blob = new Blob([dataStr], { type: 'application/json' });
-					const url = URL.createObjectURL(blob);
-					const a = document.createElement('a');
-					const today = new Date().toISOString().split('T')[0];
-					a.href = url;
-					a.download = `WordCards_Backup_${today}.json`;
-					document.body.appendChild(a);
-					a.click();
-					document.body.removeChild(a);
-					URL.revokeObjectURL(url);
-					showModal("导出成功", "进度文件已开始下载！请在您设备的下载文件夹中查找。", "icon-check-circle");
-				} catch (error) {
-					console.error("浏览器导出失败:", error);
-					showModal("导出失败", "在浏览器中导出数据时发生错误。", "icon-sentiment-dissatisfied");
-				}
-				return;
-			}
-
-			// --- Cordova 环境下的原生分享流程 ---
-			console.log("Cordova 环境，开始原生文件分享流程...");
-
-			try {
-				const dataStr = JSON.stringify(appData, null, 2);
-				const blob = new Blob([dataStr], { type: 'application/json' });
-				const today = new Date().toISOString().split('T')[0];
-				const fileName = `WordCards_Backup_${today}.json`;
-
-				const storageLocation = cordova.file.externalCacheDirectory;
-
-				window.resolveLocalFileSystemURL(storageLocation, (dirEntry) => {
-					dirEntry.getFile(fileName, { create: true, exclusive: false }, (fileEntry) => {
-						fileEntry.createWriter((fileWriter) => {
-							fileWriter.onwriteend = () => {
-								console.log("文件写入成功，准备调用分享插件:", fileEntry.nativeURL);
-
-								// [核心变更] 使用 socialsharing 插件替换 fileOpener2
-								if (window.plugins && window.plugins.socialsharing) {
-									window.plugins.socialsharing.share(
-										'这是我的二轮斩词酱学习进度备份文件。', // 分享时附带的文字
-										'二轮斩词酱 - 进度备份', // 主题 (主要用于邮件)
-										fileEntry.nativeURL, // 要分享的文件路径 (依然使用 nativeURL)
-										null, // 分享的链接 (这里不需要)
-										() => { console.log('分享成功'); }, // 成功回调
-										(err) => { console.error('分享失败:', err); showModal("分享失败", "无法调用分享功能。", "icon-sentiment-dissatisfied"); } // 失败回调
-									);
-								} else {
-									showModal("插件错误", "分享插件未找到。", "icon-sentiment-dissatisfied");
-								}
-							};
-
-							fileWriter.onerror = (e) => {
-								console.error("文件写入失败:", e.toString());
-								showModal("导出失败", "无法将备份文件写入设备存储。", "icon-sentiment-dissatisfied");
-							};
-
-							fileWriter.write(blob);
-						});
-					}, (err) => {
-						console.error("获取文件失败:", err);
-						showModal("导出失败", "无法在设备上创建备份文件。", "icon-sentiment-dissatisfied");
-					});
-				}, (err) => {
-					console.error("获取存储目录失败:", err);
-					showModal("导出失败", "无法访问设备存储目录。", "icon-sentiment-dissatisfied");
-				});
-
-			} catch (error) {
-				console.error("导出流程发生意外错误:", error);
-				showModal("导出失败", `发生未知错误: ${error.message}`, "icon-sentiment-dissatisfied");
-			}
+		    if (!appData) {
+		        showModal("没有数据", "没有可导出的数据！", "icon-sentiment-dissatisfied");
+		        return;
+		    }
+		    
+		    // 浏览器环境使用 Blob 下载
+		    try {
+		        const dataStr = JSON.stringify(appData, null, 2);
+		        const blob = new Blob([dataStr], { type: 'application/json' });
+		        const url = URL.createObjectURL(blob);
+		        const a = document.createElement('a');
+		        const today = new Date().toISOString().split('T')[0];
+		        a.href = url;
+		        a.download = `WordCards_Backup_${today}.json`;
+		        document.body.appendChild(a);
+		        a.click();
+		        document.body.removeChild(a);
+		        URL.revokeObjectURL(url);
+		        showModal("导出成功", "进度文件已开始下载！", "icon-check-circle");
+		    } catch (error) {
+		        console.error("导出失败:", error);
+		        showModal("导出失败", "导出数据时发生错误。", "icon-sentiment-dissatisfied");
+		    }
 		};
 
         const importData = async (event) => {
@@ -3073,6 +3008,7 @@ zone	[zəʊn]	n.	地区，地带；区域;
 		 * @param {Event} e 事件对象
 		 */
 		function onBackKeyDown(e) {
+			if (!isCordova()) return; // 浏览器环境不拦截返回键
 			// 阻止默认行为（直接退出应用）
 			e.preventDefault();
 
