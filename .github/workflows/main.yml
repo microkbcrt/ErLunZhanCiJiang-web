@@ -5,6 +5,11 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+    inputs:
+      version:
+        description: '版本号 (如 1.4.0)'
+        required: true
+        default: '1.4.0'
 
 permissions:
   contents: write
@@ -26,9 +31,18 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Get version from tag
+      - name: Get version
         id: get_version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/v}
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            VERSION=${{ github.event.inputs.version }}
+          else
+            VERSION="dev-$(date +%Y%m%d)"
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+          echo "Generated version: $VERSION"
 
       - name: Create dist directory
         run: mkdir -p dist
@@ -38,16 +52,16 @@ jobs:
           # 复制 index.html 到 dist 目录
           cp src/index.html dist/index.html
           
-          # 【修正】使用 | 作为分隔符，避免与 / 冲突
-          sed -i 's|<script src="cordova.js"></script>||g' dist/index.html
+          # 移除 cordova.js 引用 (使用 # 作为分隔符避免冲突)
+          sed -i 's#<script src="cordova.js"></script>##g' dist/index.html
           
           # 更新版本号
-          sed -i "s|版本：[0-9.]\+|版本：${{ steps.get_version.outputs.VERSION }}|g" dist/index.html
+          sed -i "s#版本：[0-9.]\+#版本：${{ steps.get_version.outputs.VERSION }}#g" dist/index.html
           
           # 复制字体文件
           mkdir -p dist/fonts
           if [ -d "src/fonts" ]; then
-            cp -r src/fonts/* dist/fonts/
+            cp -r src/fonts/* dist/fonts/ 2>/dev/null || true
           fi
           
           # 复制图标
@@ -59,9 +73,9 @@ jobs:
         run: |
           cat > dist/manifest.json << 'EOF'
           {
-            "name": "二轮斩词酱",
+            "name": "高考斩词酱",
             "short_name": "斩词酱",
-            "description": "以互动的方式快速背完二轮 1500 单词",
+            "description": "以互动的方式快速背完 3500 考纲",
             "start_url": "/index.html",
             "display": "standalone",
             "background_color": "#fef7ff",
@@ -84,13 +98,7 @@ jobs:
             '/',
             '/index.html',
             '/manifest.json',
-            '/icon.png',
-            '/fonts/noto-sans-sc-v38-chinese-simplified-regular.woff2',
-            '/fonts/noto-sans-sc-v38-chinese-simplified-500.woff2',
-            '/fonts/noto-sans-sc-v38-chinese-simplified-700.woff2',
-            '/fonts/roboto-v48-latin-regular.woff2',
-            '/fonts/roboto-v48-latin-500.woff2',
-            '/fonts/roboto-v48-latin-700.woff2'
+            '/icon.png'
           ];
 
           self.addEventListener('install', (e) => {
@@ -108,26 +116,16 @@ jobs:
 
       - name: Add PWA links to HTML
         run: |
-          # 【修正】使用 | 作为分隔符
-          sed -i 's|</head>|<link rel="manifest" href="/manifest.json">\n<meta name="theme-color" content="#3f51b5">\n<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js")}</script></head>|g' dist/index.html
+          sed -i 's#</head>#<link rel="manifest" href="/manifest.json">\n<meta name="theme-color" content="#3f51b5">\n<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js")}</script></head>#g' dist/index.html
 
       - name: Create README
         run: |
           cat > dist/README.md << EOF
-          # 二轮斩词酱 - 浏览器版本
+          # 高考斩词酱 - 浏览器版本
 
           ## 使用方法
           1. 直接打开 index.html 文件
           2. 或部署到任何静态网站托管服务
-
-          ## 功能说明
-          - ✅ 单词学习、复习、测试
-          - ✅ 错题本管理
-          - ✅ 学习进度统计
-          - ✅ 数据导出/导入
-          - ✅ 深色/浅色主题
-          - ⚠️ 语音朗读需要浏览器支持
-          - ⚠️ 更新检测需要网络连接
 
           ## 版本
           ${{ steps.get_version.outputs.VERSION }}
@@ -138,13 +136,16 @@ jobs:
 
       - name: Create ZIP archive
         run: |
+          # 确保在正确目录执行
           cd dist
           zip -r ../gaokao-zhancijiang-browser-${{ steps.get_version.outputs.VERSION }}.zip .
           cd ..
+          # 验证文件是否创建成功
+          ls -la *.zip
 
       - name: Upload to GitHub Release
         if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: |
             gaokao-zhancijiang-browser-${{ steps.get_version.outputs.VERSION }}.zip
@@ -165,19 +166,23 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         uses: actions/deploy-pages@v4
 
-  notify:
-    needs: build
-    runs-on: ubuntu-latest
-    if: always()
-    
-    steps:
-      - name: Build Status
+      - name: Upload ZIP as artifact (always)
+        uses: actions/upload-artifact@v4
+        with:
+          name: gaokao-zhancijiang-browser-${{ steps.get_version.outputs.VERSION }}
+          path: gaokao-zhancijiang-browser-${{ steps.get_version.outputs.VERSION }}.zip
+          retention-days: 30
+
+      - name: Build Summary
         run: |
-          if [ "${{ needs.build.result }}" == "success" ]; then
-            echo "✅ 构建成功！"
-            echo "📦 下载链接：https://github.com/${{ github.repository }}/releases"
-            echo "🌐 在线访问：https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          echo "## ✅ 构建完成" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**版本:** ${{ steps.get_version.outputs.VERSION }}" >> $GITHUB_STEP_SUMMARY
+          echo "**时间:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [[ "${{ startsWith(github.ref, 'refs/tags/') }}" == "true" ]]; then
+            echo "📦 Release: https://github.com/${{ github.repository }}/releases" >> $GITHUB_STEP_SUMMARY
+            echo "🌐 Pages: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> $GITHUB_STEP_SUMMARY
           else
-            echo "❌ 构建失败，请检查日志"
-            exit 1
+            echo "📦 下载：查看上方 Artifacts" >> $GITHUB_STEP_SUMMARY
           fi
