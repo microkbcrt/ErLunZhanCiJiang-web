@@ -47,24 +47,54 @@ jobs:
       - name: Create dist directory
         run: mkdir -p dist
 
-      - name: Process HTML for browser
+      - name: Process HTML with Node.js
         run: |
-          # 复制 index.html 到 dist 目录
-          cp src/index.html dist/index.html
+          node << 'NODESCRIPT'
+          const fs = require('fs');
           
-          # 移除 cordova.js 引用 (使用 # 作为分隔符避免冲突)
-          sed -i 's#<script src="cordova.js"></script>##g' dist/index.html
+          // 读取源文件
+          let html = fs.readFileSync('src/index.html', 'utf8');
           
-          # 更新版本号
-          sed -i "s#版本：[0-9.]\+#版本：${{ steps.get_version.outputs.VERSION }}#g" dist/index.html
+          // 1. 移除 cordova.js 引用
+          html = html.replace(/<script src="cordova\.js"><\/script>/g, '');
+          console.log('✓ 已移除 cordova.js');
           
-          # 复制字体文件
+          // 2. 更新版本号
+          html = html.replace(/版本：[\d.]+/g, `版本：${process.env.VERSION}`);
+          console.log(`✓ 已更新版本号：${process.env.VERSION}`);
+          
+          // 3. 添加 PWA 链接（在</head>之前）
+          const pwaCode = `<link rel="manifest" href="/manifest.json">
+          <meta name="theme-color" content="#3f51b5">
+          <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js")}</script>`;
+          html = html.replace('</head>', pwaCode + '\n</head>');
+          console.log('✓ 已添加 PWA 支持');
+          
+          // 4. 修改 checkForUpdates 函数，使其在浏览器环境也能工作
+          html = html.replace(
+            /if \(!window\.cordova \|\| !window\.cordova\.getAppVersion\) \{[\s\S]*?return;[\s\S]*?\}/,
+            `// 浏览器环境也检查更新
+            // const currentVersion = await cordova.getAppVersion.getVersionNumber();
+            const currentVersion = '${process.env.VERSION}';`
+          );
+          console.log('✓ 已修改更新检测逻辑');
+          
+          // 写入目标文件
+          fs.writeFileSync('dist/index.html', html);
+          console.log('✅ HTML 处理完成');
+          NODESCRIPT
+        env:
+          VERSION: ${{ steps.get_version.outputs.VERSION }}
+
+      - name: Copy fonts
+        run: |
           mkdir -p dist/fonts
           if [ -d "src/fonts" ]; then
-            cp -r src/fonts/* dist/fonts/ 2>/dev/null || true
+            cp -r src/fonts/* dist/fonts/ 2>/dev/null || echo "No fonts to copy"
           fi
-          
-          # 复制图标
+
+      - name: Copy icon
+        run: |
           if [ -f "src/icon.png" ]; then
             cp src/icon.png dist/
           fi
@@ -75,7 +105,7 @@ jobs:
           {
             "name": "高考斩词酱",
             "short_name": "斩词酱",
-            "description": "以互动的方式快速背完 1500 二轮单词",
+            "description": "以互动的方式快速背完 3500 考纲",
             "start_url": "/index.html",
             "display": "standalone",
             "background_color": "#fef7ff",
@@ -114,18 +144,23 @@ jobs:
           });
           EOF
 
-      - name: Add PWA links to HTML
-        run: |
-          sed -i 's#</head>#<link rel="manifest" href="/manifest.json">\n<meta name="theme-color" content="#3f51b5">\n<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js")}</script></head>#g' dist/index.html
-
       - name: Create README
         run: |
           cat > dist/README.md << EOF
-          # 二轮斩词酱 - 浏览器版本
+          # 高考斩词酱 - 浏览器版本
 
           ## 使用方法
           1. 直接打开 index.html 文件
           2. 或部署到任何静态网站托管服务
+
+          ## 功能说明
+          - ✅ 单词学习、复习、测试
+          - ✅ 错题本管理
+          - ✅ 学习进度统计
+          - ✅ 数据导出/导入
+          - ✅ 深色/浅色主题
+          - ⚠️ 语音朗读使用 Web Speech API
+          - ⚠️ 更新检测需要网络连接
 
           ## 版本
           ${{ steps.get_version.outputs.VERSION }}
@@ -136,11 +171,7 @@ jobs:
 
       - name: Create ZIP archive
         run: |
-          # 确保在正确目录执行
-          cd dist
-          zip -r ../gaokao-zhancijiang-browser-${{ steps.get_version.outputs.VERSION }}.zip .
-          cd ..
-          # 验证文件是否创建成功
+          zip -r gaokao-zhancijiang-browser-${{ steps.get_version.outputs.VERSION }}.zip dist/
           ls -la *.zip
 
       - name: Upload to GitHub Release
