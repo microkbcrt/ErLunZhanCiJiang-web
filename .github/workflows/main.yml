@@ -75,7 +75,7 @@ jobs:
           {
             "name": "高考斩词酱",
             "short_name": "斩词酱",
-            "description": "以互动的方式快速背完 3500 考纲",
+            "description": "以互动的方式快速背完 1500 二轮单词",
             "start_url": "/index.html",
             "display": "standalone",
             "background_color": "#fef7ff",
@@ -121,7 +121,7 @@ jobs:
       - name: Create README
         run: |
           cat > dist/README.md << EOF
-          # 高考斩词酱 - 浏览器版本
+          # 二轮斩词酱 - 浏览器版本
 
           ## 使用方法
           1. 直接打开 index.html 文件
