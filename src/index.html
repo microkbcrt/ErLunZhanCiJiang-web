@@ -13,8 +13,8 @@
 		  font-style: normal;
 		  font-weight: 400;
 		  src: local(''),
-			   url('fonts/noto-sans-sc-v38-chinese-simplified-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-			   url('fonts/noto-sans-sc-v26-chinese-simplified-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+			   url('fonts/noto-sans-sc-v38-chinese-simplified-regular.woff2') format('woff2'),
+			   url('fonts/noto-sans-sc-v26-chinese-simplified-regular.woff') format('woff');
 		}
 		/* noto-sans-sc-500 - chinese-simplified */
 		@font-face {
@@ -22,8 +22,8 @@
 		  font-style: normal;
 		  font-weight: 500;
 		  src: local(''),
-			   url('fonts/noto-sans-sc-v38-chinese-simplified-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-			   url('fonts/noto-sans-sc-v26-chinese-simplified-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+			   url('fonts/noto-sans-sc-v38-chinese-simplified-500.woff2') format('woff2'),
+			   url('fonts/noto-sans-sc-v26-chinese-simplified-500.woff') format('woff');
 		}
 		/* noto-sans-sc-700 - chinese-simplified */
 		@font-face {
@@ -31,8 +31,8 @@
 		  font-style: normal;
 		  font-weight: 700;
 		  src: local(''),
-			   url('fonts/noto-sans-sc-v38-chinese-simplified-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-			   url('fonts/noto-sans-sc-v26-chinese-simplified-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+			   url('fonts/noto-sans-sc-v38-chinese-simplified-700.woff2') format('woff2'),
+			   url('fonts/noto-sans-sc-v26-chinese-simplified-700.woff') format('woff');
 		}
 		/* roboto-regular - latin */
 		@font-face {
@@ -40,8 +40,8 @@
 		  font-style: normal;
 		  font-weight: 400;
 		  src: local(''),
-			   url('fonts/roboto-v48-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-			   url('fonts/roboto-v30-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+			   url('fonts/roboto-v48-latin-regular.woff2') format('woff2'),
+			   url('fonts/roboto-v30-latin-regular.woff') format('woff');
 		}
 		/* roboto-500 - latin */
 		@font-face {
@@ -49,8 +49,8 @@
 		  font-style: normal;
 		  font-weight: 500;
 		  src: local(''),
-			   url('fonts/roboto-v48-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-			   url('fonts/roboto-v30-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+			   url('fonts/roboto-v48-latin-500.woff2') format('woff2'),
+			   url('fonts/roboto-v30-latin-500.woff') format('woff');
 		}
 		/* roboto-700 - latin */
 		@font-face {
@@ -58,13 +58,11 @@
 		  font-style: normal;
 		  font-weight: 700;
 		  src: local(''),
-			   url('fonts/roboto-v48-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-			   url('fonts/roboto-v30-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+			   url('fonts/roboto-v48-latin-700.woff2') format('woff2'),
+			   url('fonts/roboto-v30-latin-700.woff') format('woff');
 		}
 
-
         :root {
-            /* Material You 3 - Light Theme Palette */
             --md-sys-primary-light: #3f51b5; --md-sys-on-primary-light: #ffffff;
             --md-sys-primary-container-light: #e0e0ff; --md-sys-on-primary-container-light: #000c62;
             --md-sys-secondary-light: #009688; --md-sys-on-secondary-light: #ffffff;
@@ -75,7 +73,6 @@
             --md-sys-surface-variant-light: #e7e0ec; --md-sys-on-surface-variant-light: #49454f;
             --md-sys-outline-light: #79747e; --md-sys-shadow-light: #000000;
 
-            /* Material You 3 - Dark Theme Palette */
             --md-sys-primary-dark: #b3c5ff; --md-sys-on-primary-dark: #00227c;
             --md-sys-primary-container-dark: #203aa0; --md-sys-on-primary-container-dark: #dae2ff;
             --md-sys-secondary-dark: #4db6ac; --md-sys-on-secondary-dark: #003732;
@@ -86,28 +83,24 @@
             --md-sys-surface-variant-dark: #49454f; --md-sys-on-surface-variant-dark: #cac4d0;
             --md-sys-outline-dark: #938f99; --md-sys-shadow-dark: #000000;
 
-            /* Shape & Typography */
             --font-family: 'Roboto', 'Noto Sans SC', sans-serif;
             --radius-xs: 4px; --radius-s: 8px; --radius-m: 12px;
             --radius-l: 16px; --radius-xl: 28px; --radius-full: 999px;
             --nav-height: 80px;
 
-            /* Motion */
             --motion-duration-short: 150ms; --motion-duration-medium: 250ms;
             --motion-duration-long: 350ms; --motion-easing-emphasized: cubic-bezier(0.4, 0.0, 0.2, 1);
             --motion-easing-standard: cubic-bezier(0.4, 0.0, 0.6, 1);
         }
 
-        /* --- Global Styles & Resets --- */
         *, *::before, *::after { box-sizing: border-box; }
         body {
             font-family: var(--font-family); margin: 0; -webkit-tap-highlight-color: transparent;
             transition: background-color var(--motion-duration-medium), color var(--motion-duration-medium);
             overflow: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
         }
-      
-        /* --- Theme Switching --- */
-        body.light-mode { 
+
+        body.light-mode {
             background-color: var(--md-sys-background-light); color: var(--md-sys-on-background-light);
             --md-sys-primary: var(--md-sys-primary-light); --md-sys-on-primary: var(--md-sys-on-primary-light);
             --md-sys-primary-container: var(--md-sys-primary-container-light); --md-sys-on-primary-container: var(--md-sys-on-primary-container-light);
@@ -118,7 +111,7 @@
             --md-sys-surface-variant: var(--md-sys-surface-variant-light); --md-sys-on-surface-variant: var(--md-sys-on-surface-variant-light);
             --md-sys-outline: var(--md-sys-outline-light); --shadow-color: 220 10% 10%;
         }
-        body.dark-mode { 
+        body.dark-mode {
             background-color: var(--md-sys-background-dark); color: var(--md-sys-on-background-dark);
             --md-sys-primary: var(--md-sys-primary-dark); --md-sys-on-primary: var(--md-sys-on-primary-dark);
             --md-sys-primary-container: var(--md-sys-primary-container-dark); --md-sys-on-primary-container: var(--md-sys-on-primary-container-dark);
@@ -129,6 +122,7 @@
             --md-sys-surface-variant: var(--md-sys-surface-variant-dark); --md-sys-on-surface-variant: var(--md-sys-on-surface-variant-dark);
             --md-sys-outline: var(--md-sys-outline-dark); --shadow-color: 0 0% 0%;
         }
+
         .view { display: none; opacity: 0; transition: opacity var(--motion-duration-medium) var(--motion-easing-standard); }
         .view.active { display: flex; flex-direction: column; height: 100vh; padding-bottom: var(--nav-height); opacity: 1; }
         #learning-view { padding-bottom: 0; }
@@ -141,7 +135,7 @@
         .dark-mode .top-app-bar { background-image: linear-gradient(rgba(var(--md-sys-primary-dark), 0.08), rgba(var(--md-sys-primary-dark), 0.08)); }
         .top-app-bar h1 { font-size: 1.375rem; font-weight: 500; margin: 0; }
         .state-layer { width: 100%; height: 100%; position: absolute; top: 0; left: 0; background-color: var(--md-sys-on-surface); opacity: 0; transition: opacity var(--motion-duration-short); }
-        .icon-btn { 
+        .icon-btn {
             background: none; border: none; color: var(--md-sys-on-surface-variant); font-size: 1.5em; cursor: pointer;
             border-radius: var(--radius-full); width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center;
             position: relative; overflow: hidden;
@@ -161,10 +155,12 @@
         .nav-btn.active .nav-icon { color: var(--md-sys-on-secondary-container); }
         .nav-btn.active .nav-text { color: var(--md-sys-on-surface); }
         .nav-btn .state-layer { background-color: var(--md-sys-on-surface); }
+
         .card { border-radius: var(--radius-l); margin-bottom: 16px; padding: 16px; transition: background-color var(--motion-duration-medium); background-color: var(--md-sys-surface); color: var(--md-sys-on-surface); border: 1px solid var(--md-sys-outline); }
         .card h3 { color: var(--md-sys-primary); margin: 0 0 8px 0; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
         .card p { margin: 4px 0 0 0; color: var(--md-sys-on-surface-variant); font-size: 0.9rem; }
         .card a { color: var(--md-sys-primary); text-decoration: none; font-weight: 500; }
+
         .btn { width: 100%; padding: 0 24px; height: 48px; margin-top: 12px; border: none; border-radius: var(--radius-full); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.05rem; cursor: pointer; transition: all var(--motion-duration-short) var(--motion-easing-standard); display: inline-flex; justify-content: center; align-items: center; position: relative; overflow: hidden; text-transform: uppercase; }
         .btn .state-layer { background-color: currentColor; } .btn:hover > .state-layer { opacity: 0.08; } .btn:focus > .state-layer { opacity: 0.12; } .btn:active > .state-layer { opacity: 0.12; } .btn:disabled { cursor: not-allowed; }
         .btn-filled { background-color: var(--md-sys-primary); color: var(--md-sys-on-primary); box-shadow: 0 1px 2px rgba(var(--shadow-color), 0.3); }
@@ -173,6 +169,7 @@
         .btn-outlined { background-color: transparent; color: var(--md-sys-primary); border: 1px solid var(--md-sys-outline); }
         .btn-outlined:disabled { border-color: rgba(var(--md-sys-on-surface), 0.12); color: rgba(var(--md-sys-on-surface), 0.38); }
         .btn-danger { background-color: var(--md-sys-error); color: var(--md-sys-on-error); }
+
         .list-item { display: flex; align-items: center; gap: 16px; padding: 12px 16px; border-radius: var(--radius-l); margin-bottom: 12px; cursor: pointer; transition: all var(--motion-duration-medium) var(--motion-easing-standard); background-color: var(--md-sys-surface); border: 1px solid transparent; position: relative; overflow: hidden; }
         .list-item:hover { border-color: var(--md-sys-outline); transform: translateY(-2px); box-shadow: 0 4px 8px 3px rgba(var(--shadow-color), 0.15), 0 1px 3px rgba(var(--shadow-color), 0.3); }
         .list-item.locked { cursor: not-allowed; opacity: 0.6; } .list-item.locked:hover { transform: none; box-shadow: none; border-color: transparent; }
@@ -185,12 +182,44 @@
         .list-item.challenge-item.unlocked .item-icon { color: #e65100; }
         .list-item.challenge-item { border-top: 2px solid var(--md-sys-primary-container); border-bottom: 2px solid var(--md-sys-primary-container); }
         .list-item.challenge-item.unlocked { border-color: #e65100; }
-        #flashcard { min-height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-radius: var(--radius-xl); background-color: var(--md-sys-primary-container); color: var(--md-sys-on-primary-container); transition: transform var(--motion-duration-medium) var(--motion-easing-emphasized), opacity var(--motion-duration-medium) var(--motion-easing-standard); transform: scale(1); opacity: 1; }
+
+        #flashcard {
+            min-height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; border-radius: var(--radius-xl); background-color: var(--md-sys-primary-container);
+            color: var(--md-sys-on-primary-container); transition: transform var(--motion-duration-medium) var(--motion-easing-emphasized), opacity var(--motion-duration-medium) var(--motion-easing-standard); transform: scale(1); opacity: 1;
+        }
         #flashcard.card-exit { transform: scale(0.95); opacity: 0; }
-        #question-text { font-size: 2.25rem; font-weight: 500; margin: 0; } #phonetic-text { font-size: 1.1rem; margin-top: 8px; opacity: 0.8; }
+        #question-text { font-size: 2.25rem; font-weight: 500; margin: 0; }
+        #phonetic-text { font-size: 1.1rem; margin-top: 8px; opacity: 0.8; }
+
+        .question-meanings {
+            margin-top: 14px;
+            width: 100%;
+            text-align: left;
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+        .sense-line {
+            margin-top: 6px;
+            color: var(--md-sys-on-primary-container);
+        }
+        .sense-pos {
+            display: inline-block;
+            min-width: 56px;
+            font-weight: 700;
+            opacity: 0.9;
+            margin-right: 6px;
+            vertical-align: top;
+        }
+        .sense-meaning {
+            opacity: 0.95;
+            word-break: break-word;
+        }
+
         .correct-answer { border-color: var(--md-sys-secondary) !important; background-color: rgba(var(--md-sys-secondary), 0.15) !important; color: var(--md-sys-secondary) !important; }
         .wrong-answer { border-color: var(--md-sys-error) !important; background-color: rgba(var(--md-sys-error), 0.15) !important; color: var(--md-sys-error) !important; animation: shake 0.5s var(--motion-easing-standard); }
         @keyframes shake { 10%, 50%, 90% { transform: translateX(-4px); } 30%, 70% { transform: translateX(4px); } }
+
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); z-index: 100; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity var(--motion-duration-medium); }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
         .modal-content { padding: 24px; border-radius: var(--radius-xl); background-color: var(--md-sys-surface); color: var(--md-sys-on-surface); transform: scale(0.9); transition: transform var(--motion-duration-medium) var(--motion-easing-emphasized); width: 90%; max-width: 560px; }
@@ -201,14 +230,17 @@
         .modal-icon { display: flex; justify-content: center; margin-bottom: 16px; color: var(--md-sys-primary); }
         .modal-icon .icon { width: 32px; height: 32px; } .modal-actions { display: flex; justify-content: flex-end; gap: 8px; }
         .modal-actions .btn { width: auto; }
+
         .migration-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
         }
+
         input[type="number"] { border: 1px solid var(--md-sys-outline); background-color: var(--md-sys-surface); color: var(--md-sys-on-surface); border-radius: var(--radius-s); padding: 8px 12px; font-size: 1em; transition: all var(--motion-duration-short); }
         input[type="number"]:focus { border-color: var(--md-sys-primary); outline: 2px solid var(--md-sys-primary); outline-offset: 1px; }
         .hidden { display: none !important; }
+
         .settings-content { margin-top: 8px; }
         .settings-item { padding: 24px 0; border-top: 1px solid var(--md-sys-surface-variant); }
         .settings-item:first-child { border-top: none; padding-top: 0; }
@@ -216,13 +248,61 @@
         .settings-item label { display: block; font-size: 1rem; font-weight: 500; color: var(--md-sys-on-surface); margin-bottom: 4px; }
         .settings-item p { font-size: 0.875rem; color: var(--md-sys-on-surface-variant); margin: 0 0 16px 0; line-height: 1.4; }
         .input-group { display: flex; align-items: center; gap: 12px; } .input-group input { margin: 0; } .input-group .btn { margin: 0; }
-        .option-btn { width: 100%; padding: 0 24px; height: 52px; border: none; border-radius: var(--radius-full); font-size: 1rem; font-weight: 500; cursor: pointer; transition: all var(--motion-duration-short) var(--motion-easing-standard); display: inline-flex; justify-content: center; align-items: center; position: relative; overflow: hidden; text-transform: none; line-height: 1.5; }
-        .option-btn .state-layer { background-color: currentColor; } .option-btn:hover > .state-layer { opacity: 0.08; } .option-btn:focus > .state-layer { opacity: 0.12; } .option-btn:active > .state-layer { opacity: 0.12; }
+
+        .option-btn {
+            width: 100%;
+            padding: 12px 20px;
+            min-height: 64px;
+            border: none;
+            border-radius: var(--radius-l);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--motion-duration-short) var(--motion-easing-standard);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+            position: relative;
+            overflow: hidden;
+            text-transform: none;
+            line-height: 1.5;
+            text-align: left;
+        }
+        .option-btn .state-layer { background-color: currentColor; }
+        .option-btn:hover > .state-layer { opacity: 0.08; }
+        .option-btn:focus > .state-layer { opacity: 0.12; }
+        .option-btn:active > .state-layer { opacity: 0.12; }
         .option-btn:disabled { cursor: not-allowed; color: var(--md-sys-on-surface-variant); }
         .btn-tonal { background-color: var(--md-sys-secondary-container); color: var(--md-sys-on-secondary-container); }
         .btn-tonal:disabled { background-color: rgba(var(--md-sys-on-surface), 0.12); color: rgba(var(--md-sys-on-surface), 0.38); }
+
+        .option-main {
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            position: relative;
+            z-index: 1;
+            text-align: left;
+            white-space: normal;
+            word-break: break-word;
+        }
+        .option-sub {
+            margin-top: 6px;
+            font-size: 0.86rem;
+            line-height: 1.5;
+            opacity: 0.92;
+            text-align: left;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            white-space: normal;
+            word-break: break-word;
+        }
+
         .option-btn.correct-answer { background-color: var(--md-sys-secondary) !important; color: var(--md-sys-on-secondary) !important; }
         .option-btn.wrong-answer { background-color: var(--md-sys-error) !important; color: var(--md-sys-on-error) !important; animation: shake 0.5s var(--motion-easing-standard); }
+
         .dashboard-hero { display: flex; flex-direction: column; align-items: center; padding: 32px 0; text-align: center; }
         .progress-ring { position: relative; width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; }
         .progress-ring__circle { width: 100%; height: 100%; border-radius: 50%; background-color: var(--md-sys-surface-variant); background-image: conic-gradient( var(--md-sys-primary) calc(var(--progress) * 1%), transparent 0 ); mask: radial-gradient(transparent 65%, black 66%); -webkit-mask: radial-gradient(transparent 65%, black 66%); transition: background-image var(--motion-duration-long) var(--motion-easing-emphasized); }
@@ -238,7 +318,6 @@
 </head>
 <body>
 
-    <!-- SVG Icon Definitions -->
     <svg width="0" height="0" style="position:absolute">
       <defs>
         <symbol id="icon-book" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></symbol>
@@ -373,6 +452,7 @@
             </div>
         </div>
     </div>
+
     <div id="learning-view" class="view">
         <div class="top-app-bar">
             <button id="back-to-main-btn" class="icon-btn"><span class="state-layer"></span><svg class="icon"><use href="#icon-back"/></svg></button>
@@ -389,14 +469,13 @@
                     <button id="speak-btn" class="icon-btn" style="position: absolute; right: -54px; top: 50%; transform: translateY(-50%);"><span class="state-layer"></span><svg class="icon"><use href="#icon-volume"/></svg></button>
                 </div>
                 <div id="phonetic-text"></div>
+                <div id="question-meanings" class="question-meanings"></div>
             </div>
             <div id="options-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
             <button id="next-word-btn" class="btn btn-filled hidden">下一个<span class="state-layer"></span></button>
             <button id="end-session-manually-btn" class="btn btn-outlined hidden">结束本次练习<span class="state-layer"></span></button>
         </div>
     </div>
-
-    <!-- =========== [新增] 结束 =========== -->
 
     <div id="tos-modal" class="modal-overlay">
         <div class="modal-content">
@@ -422,7 +501,7 @@
 			</div>
         </div>
     </div>
-  
+
     <div id="settings-modal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
@@ -450,7 +529,7 @@
             </div>
         </div>
     </div>
-    <!-- =========== [新增] 确认操作模态框 =========== -->
+
     <div id="confirmation-modal" class="modal-overlay">
         <div class="modal-content">
             <div id="confirmation-modal-icon" class="modal-icon">
@@ -464,6 +543,7 @@
             </div>
         </div>
     </div>
+
     <div id="result-modal" class="modal-overlay">
         <div class="modal-content">
             <div id="modal-icon" class="modal-icon"></div>
@@ -474,6 +554,7 @@
             </div>
         </div>
     </div>
+
     <div id="bottom-nav">
         <button id="nav-main" class="nav-btn active">
             <span class="nav-indicator"></span>
@@ -496,28 +577,28 @@
             <span class="nav-text">关于</span>
         </button>
     </div>
-	<!-- ==================== 更新提示模态框 (修改后) ==================== -->
-	<div id="update-modal" class="modal-overlay"> <!-- <--- 修改 class -->
+
+	<div id="update-modal" class="modal-overlay">
 		<div class="modal-content">
 			<div class="modal-icon"><svg class="icon"><use href="#icon-upgrade"/></svg></div>
 			<h3 id="update-modal-title" style="text-align: center; width: 100%;">发现新版本</h3>
 			<p id="update-modal-text" style="text-align: center;">检测到新版本 vX.Y.Z，我们可能修复了重大BUG，建议您立即更新</p>
 			<div class="modal-actions">
-				<button id="update-later-btn" class="btn btn-outlined">以后再说</button> <!-- <--- 修改 class -->
+				<button id="update-later-btn" class="btn btn-outlined">以后再说</button>
 				<button id="update-now-btn" class="btn btn-filled">立即更新</button>
 			</div>
 		</div>
 	</div>
+
 	<script src="cordova.js"></script>
 	<script>
-	// [重要] 请确认这是你的 GitHub 用户名和仓库名
-	const GITHUB_REPO = 'microkbcrt/GaokaoZhanCiJiang'; 
+	const GITHUB_REPO = 'microkbcrt/GaokaoZhanCiJiang';
 	const GITHUB_API_URL = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`;
 
-	let latestReleaseInfo = null; // 用于存储最新版本信息	
+	let latestReleaseInfo = null;
+
     document.addEventListener('DOMContentLoaded', () => {
 
-        // ======== [新增] IndexedDB 帮助模块 ========
         const dbHelper = {
             db: null,
             DB_NAME: 'WordCardsDB_V7',
@@ -582,7 +663,6 @@
             }
         };
 
-        // ======== [新增] 内置单词库 ========
         const builtinWordList = `absolutely	/ˈæbsəluːtli/	adv.	绝对地；完全地；极其；当然
 achievement	/əˈtʃiːvmənt/	n.	成就，成绩；达到，完成
 acquire	/əˈkwaɪə(r)/	vt.	获得，得到
@@ -2084,45 +2164,143 @@ wrestle	[ˈresl]	vt. & vi.	摔跤；努力处理
 wrinkle	[ˈrɪŋkl]	n.	皱纹；皱褶 vt. & vi. 起皱纹，皱起
 wrist	[rɪst]	n.	手腕，腕关节
 yield	[jiːld]	v.	出产（作物）；产生（收益、效益等）；屈服；让步 n. 产量；产出
-zone	[zəʊn]	n.	地区，地带；区域;
-        // ↑ 您可以在这里继续添加更多单词...
- 
-        // ======== [新增] 专门用于处理单词文本并返回完整数据结构的辅助函数 ========
+zone	[zəʊn]	n.	地区，地带；区域`;
+
+        const looksLikePos = (text) => {
+            if (!text) return false;
+            const s = text.trim();
+            return /^[A-Za-z][A-Za-z.\-&/ ]*$/.test(s) && s.includes('.');
+        };
+
+        const parseMeanings = (rawExplain) => {
+            if (!rawExplain) return [];
+
+            const normalized = rawExplain
+                .replace(/\t/g, '；')
+                .replace(/;/g, '；')
+                .replace(/\s*；\s*/g, '；')
+                .trim();
+
+            const parts = normalized.split('；').map(s => s.trim()).filter(Boolean);
+            if (parts.length === 0) return [];
+
+            const senses = [];
+            let currentPos = '';
+            let currentMeanings = [];
+
+            const flush = () => {
+                if (currentPos || currentMeanings.length) {
+                    senses.push({
+                        pos: currentPos,
+                        meaning: currentMeanings.join('；').trim()
+                    });
+                }
+                currentPos = '';
+                currentMeanings = [];
+            };
+
+            for (const part of parts) {
+                if (looksLikePos(part)) {
+                    flush();
+                    currentPos = part;
+                } else {
+                    currentMeanings.push(part);
+                }
+            }
+            flush();
+
+            if (senses.length === 0) {
+                return [{ pos: '', meaning: normalized }];
+            }
+
+            return senses.filter(item => item.meaning);
+        };
+
+        const buildDisplayMeaning = (meanings) => {
+            return meanings
+                .map(item => item.pos ? `${item.pos} ${item.meaning}` : item.meaning)
+                .join('；');
+        };
+
+        const escapeHtml = (str = '') => String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+
+        const renderMeaningHtml = (meanings = []) => {
+            return meanings.map(item => `
+                <div class="sense-line">
+                    ${item.pos ? `<span class="sense-pos">${escapeHtml(item.pos)}</span>` : ''}
+                    <span class="sense-meaning">${escapeHtml(item.meaning)}</span>
+                </div>
+            `).join('');
+        };
+
         const processTextToAppData = (text, existingSettings) => {
             console.log("--- [Debug] Running processTextToAppData ---");
             const lines = text.trim().split('\n').filter(Boolean);
             console.log(`[Debug] Parsed ${lines.length} lines from text.`);
- 
+
             if (lines.length === 0) {
                 console.error("[Debug] No lines found in text. Aborting.");
                 return null;
             }
- 
+
             const words = lines.map((l, i) => {
-                const p = l.split('\t');
-                if (p.length < 4) {
-                    return null;
+                const p = l.split('\t').map(x => x.trim()).filter(Boolean);
+                if (p.length < 3) return null;
+
+                const word = p[0] || '';
+                const phonetic = p[1] || '';
+
+                let rawExplain = '';
+                let pos = '';
+                let translation = '';
+
+                if (p.length === 3) {
+                    rawExplain = p[2];
+                } else {
+                    rawExplain = p.slice(2).join('\t');
                 }
-                const [w, ph, ps, ...ts] = p;
-                return { id: `${w.trim()}-${i}`, word: w.trim(), phonetic: ph.trim(), pos: ps.trim(), translation: ts.join('\t').trim(), correct: 0, wrong: 0, mastery: 0, lastReviewDate: null, nextReviewDate: null, firstLearnedDate: null };
+
+                const meanings = parseMeanings(rawExplain);
+                pos = meanings.map(m => m.pos).filter(Boolean).join(' / ');
+                translation = buildDisplayMeaning(meanings);
+
+                return {
+                    id: `${word}-${i}`,
+                    word,
+                    phonetic,
+                    pos,
+                    translation,
+                    meanings,
+                    correct: 0,
+                    wrong: 0,
+                    mastery: 0,
+                    lastReviewDate: null,
+                    nextReviewDate: null,
+                    firstLearnedDate: null
+                };
             }).filter(Boolean);
-            
+
             console.log(`[Debug] Parsed ${words.length} valid words.`);
- 
+
             if (words.length === 0) {
                 console.error("[Debug] No valid words could be parsed. Aborting.");
                 return null;
             }
-            
+
             const baseData = existingSettings ? {id: APP_DATA_ID, settings: existingSettings} : defaultAppData;
             const newAppData = JSON.parse(JSON.stringify(baseData));
- 
+
             newAppData.chapters = [];
             newAppData.wrongWords = [];
             newAppData.completedChallenges = [];
-            
+
             const size = newAppData.settings.chapterSize;
- 
+
             for (let i = 0; i < words.length; i += size) {
                 newAppData.chapters.push({
                     id: newAppData.chapters.length + 1,
@@ -2136,13 +2314,12 @@ zone	[zəʊn]	n.	地区，地带；区域;
             console.log(`[Debug] Created ${newAppData.chapters.length} chapters.`);
             return newAppData;
         };
-		
-        // ======== 数据与常量定义 ========
+
         const SESSION_DB_NAME = 'WordFlashCards_ActiveSession_V7';
         const TIME_TRACKER_DB_NAME = 'WordFlashCards_TimeTracker_V7';
         const APP_DATA_ID = 'main';
-      
-        let appData = null; 
+
+        let appData = null;
         const defaultAppData = {
             id: APP_DATA_ID,
             settings: { chapterSize: 20, unlockThreshold: { learn: 80, test: 100, challenge: 90 }, theme: 'light' },
@@ -2150,12 +2327,11 @@ zone	[zəʊn]	n.	地区，地带；区域;
             wrongWords: [],
             completedChallenges: [],
         };
-      
-        const reviewIntervals = [1, 2, 4, 7, 15, 30]; 
+
+        const reviewIntervals = [1, 2, 4, 7, 15, 30];
         let session = null;
         let timeTrackingInterval = null;
 
-        // ======== DOM 元素缓存 ========
         const dom = {
             body: document.body,
             mainView: document.getElementById('main-view'),
@@ -2188,6 +2364,7 @@ zone	[zəʊn]	n.	地区，地带；区域;
             flashcard: document.getElementById('flashcard'),
             questionText: document.getElementById('question-text'),
             phoneticText: document.getElementById('phonetic-text'),
+            questionMeanings: document.getElementById('question-meanings'),
             speakBtn: document.getElementById('speak-btn'),
             optionsContainer: document.getElementById('options-container'),
             nextWordBtn: document.getElementById('next-word-btn'),
@@ -2197,14 +2374,12 @@ zone	[zəʊn]	n.	地区，地带；区域;
             modalTitle: document.getElementById('modal-title'),
             modalMessage: document.getElementById('modal-message'),
             modalCloseBtn: document.getElementById('modal-close-btn'),
-            // --- [新增] 确认模态框元素 ---
             confirmationModal: document.getElementById('confirmation-modal'),
             confirmationModalTitle: document.getElementById('confirmation-modal-title'),
             confirmationModalMessage: document.getElementById('confirmation-modal-message'),
             confirmationModalIcon: document.getElementById('confirmation-modal-icon'),
             confirmBtnYes: document.getElementById('confirm-btn-yes'),
             confirmBtnNo: document.getElementById('confirm-btn-no'),
-            // --- [新增] 结束 ---
             settingsModal: document.getElementById('settings-modal'),
             settingsCloseBtn: document.getElementById('settings-close-btn'),
             tosModal: document.getElementById('tos-modal'),
@@ -2220,13 +2395,12 @@ zone	[zəʊn]	n.	地区，地带；区域;
             saveSettingsBtn: document.getElementById('save-settings-btn'),
             clearDataBtn: document.getElementById('clear-data-btn'),
 			updateModal: document.getElementById('update-modal'),
-			updateModalTitle: document.getElementById('update-modal-title'), // 你的代码里没有这个，但最好加上
+			updateModalTitle: document.getElementById('update-modal-title'),
 			updateModalText: document.getElementById('update-modal-text'),
 			updateLaterBtn: document.getElementById('update-later-btn'),
 			updateNowBtn: document.getElementById('update-now-btn'),
         };
 
-        // ======== 数据持久化 ========
         const saveAppData = async () => {
             if (appData) {
                 try {
@@ -2255,7 +2429,7 @@ zone	[zəʊn]	n.	地区，地带；区域;
                 try {
                     const oldData = JSON.parse(oldDataString);
                     oldData.id = APP_DATA_ID;
-                    await dbHelper.set(oldData); 
+                    await dbHelper.set(oldData);
                     appData = oldData;
                     localStorage.removeItem(OLD_LS_KEY);
                     localStorage.removeItem('WordFlashCards_ActiveSession_V6');
@@ -2271,7 +2445,7 @@ zone	[zəʊn]	n.	地区，地带；区域;
 
             console.log("信息：作为首次启动，尝试使用内置词库初始化应用...");
             const initialData = processTextToAppData(builtinWordList, null);
-            
+
             if (initialData) {
                 await dbHelper.set(initialData);
                 appData = initialData;
@@ -2291,12 +2465,11 @@ zone	[zəʊn]	n.	地区，地带；区域;
             localStorage.removeItem(SESSION_DB_NAME);
         };
 
-        // ======== 核心功能: 初始化 ========
         const init = async () => {
             if (!localStorage.getItem('tos_agreed_v1')) {
                 dom.tosModal.classList.add('active');
             }
- 
+
             await dbHelper.open();
             await loadAppDataAndMigrate();
             loadSession();
@@ -2305,22 +2478,15 @@ zone	[zəʊn]	n.	地区，地带；区域;
             setupEventListeners();
             startTimeTracker();
 
-            // --- [最终解决方案] 使用 setTimeout 延迟应用主题 ---
-            // 这样可以确保在原生视图完全稳定后才修改状态栏，
-            // 从而彻底解决启动时的竞态条件问题。
             if (appData && appData.settings) {
                 console.log('Initial setup complete. Applying theme and status bar style with a delay.');
-                
-                // 增加一个 300 毫秒的延迟
                 setTimeout(() => {
                     console.log('Executing delayed theme application.');
                     applyTheme(appData.settings.theme);
-                }, 300); 
+                }, 300);
             }
-            // --- [修改结束] ---
         };
 
-        // ======== 核心功能: 视图管理 ========
         const switchView = (viewId) => {
             const currentActive = document.querySelector('.view.active');
             if (currentActive) currentActive.classList.remove('active');
@@ -2338,9 +2504,9 @@ zone	[zəʊn]	n.	地区，地带；区域;
             }
             dom.bottomNav.classList.toggle('hidden', dom.learningView.classList.contains('active'));
         };
-      
-        // ======== 核心功能: 渲染器 ========
+
         const renderMainView = () => { renderChapterList(); updateDailyReviewCard(); };
+
         const renderChapterList = () => {
             dom.chapterList.innerHTML = '';
             if (!appData || appData.chapters.length === 0) {
@@ -2385,14 +2551,32 @@ zone	[zəʊn]	n.	地区，地带；区域;
             });
             saveAppData();
         };
-        const updateDailyReviewCard = () => { const r = getDailyReviewWords(); dom.dailyReviewCard.classList.toggle('hidden', r.length === 0); if (r.length > 0) dom.dailyReviewInfo.textContent = `今天有 ${r.length} 个单词需要复习。`; };
+
+        const updateDailyReviewCard = () => {
+            const r = getDailyReviewWords();
+            dom.dailyReviewCard.classList.toggle('hidden', r.length === 0);
+            if (r.length > 0) dom.dailyReviewInfo.textContent = `今天有 ${r.length} 个单词需要复习。`;
+        };
+
         const renderWrongWordsView = () => {
             dom.wrongWordsList.innerHTML = '';
-            if (appData.wrongWords.length === 0) { dom.wrongWordsList.innerHTML = `<p style="text-align: center; color: var(--md-sys-on-surface-variant); padding: 24px 0;">太棒了！错题本是空的！</p>`; dom.redoWrongWordsBtn.classList.add('hidden'); return; }
+            if (appData.wrongWords.length === 0) {
+                dom.wrongWordsList.innerHTML = `<p style="text-align: center; color: var(--md-sys-on-surface-variant); padding: 24px 0;">太棒了！错题本是空的！</p>`;
+                dom.redoWrongWordsBtn.classList.add('hidden');
+                return;
+            }
             const allWords = appData.chapters.flatMap(c => c.words);
-            appData.wrongWords.forEach(wordId => { const word = allWords.find(w => w.id === wordId); if (!word) return; const el = document.createElement('div'); el.className = 'list-item'; el.innerHTML = `<div class="item-icon" style="color: var(--md-sys-error);"><svg class="icon"><use href="#icon-edit"/></svg></div><div class="item-info"><h3>${word.word}</h3><p>${word.phonetic ? '['+word.phonetic+']' : ''} ${word.translation}</p></div>`; dom.wrongWordsList.appendChild(el); });
+            appData.wrongWords.forEach(wordId => {
+                const word = allWords.find(w => w.id === wordId);
+                if (!word) return;
+                const el = document.createElement('div');
+                el.className = 'list-item';
+                el.innerHTML = `<div class="item-icon" style="color: var(--md-sys-error);"><svg class="icon"><use href="#icon-edit"/></svg></div><div class="item-info"><h3>${escapeHtml(word.word)}</h3><p>${word.phonetic ? '['+escapeHtml(word.phonetic)+']' : ''} ${escapeHtml(word.translation)}</p></div>`;
+                dom.wrongWordsList.appendChild(el);
+            });
             dom.redoWrongWordsBtn.classList.remove('hidden');
         };
+
         const renderDashboardView = () => {
             const todayStr = new Date().toISOString().split('T')[0], allWords = appData.chapters.flatMap(c => c.words), totalWords = allWords.length, ringElement = document.querySelector('.progress-ring');
             if (!ringElement) return;
@@ -2400,90 +2584,323 @@ zone	[zəʊn]	n.	地区，地带；区域;
                 ringElement.style.setProperty('--progress', 0);
                 dom.stats.totalProgressPercent.textContent = '0%'; dom.stats.totalProgressRaw.textContent = '请先导入词汇表';
                 dom.stats.todayNew.textContent = '0'; dom.stats.todayTime.textContent = '0m'; dom.stats.totalMastered.textContent = '0'; dom.stats.totalWrong.textContent = '0'; return;
-            };
+            }
             const learnedWords = allWords.filter(w => w.lastReviewDate), masteredWords = learnedWords.filter(w => w.mastery >= 4).length, newToday = allWords.filter(w => w.firstLearnedDate === todayStr).length, timeData = JSON.parse(localStorage.getItem(TIME_TRACKER_DB_NAME) || '{}'), minutes = Math.floor((timeData.totalTime || 0) / 60), progressPercent = totalWords > 0 ? (learnedWords.length / totalWords) * 100 : 0;
             ringElement.style.setProperty('--progress', progressPercent.toFixed(2));
             dom.stats.totalProgressPercent.textContent = `${Math.floor(progressPercent)}%`;
             dom.stats.totalProgressRaw.textContent = `已学习 ${learnedWords.length} / ${totalWords} 个单词`;
             dom.stats.todayNew.textContent = newToday; dom.stats.todayTime.textContent = `${minutes}m`; dom.stats.totalMastered.textContent = masteredWords; dom.stats.totalWrong.textContent = appData.wrongWords.length;
         };
-      
-        // ======== 核心功能: 学习会话管理 ========
+
         const startSession = (type, id, resume = false) => {
             if (!resume) session = { type, currentIndex: 0, correct: 0, total: 0, id, words: [], tempWordStats: {} };
             dom.backToMainBtn.disabled = (type === 'test' || type === 'challenge');
             dom.endSessionManuallyBtn.classList.toggle('hidden', !['practice', 'review'].includes(type));
             switch (type) {
-                case 'learnNew': { session.chapterId = id; if(!resume) { const c = appData.chapters.find(ch => ch.id === id); session.words = c.words.filter(w => !w.firstLearnedDate); session.words.forEach(w => { session.tempWordStats[w.id] = {...w, correct: 0, wrong: 0, mastery: 0, firstLearnedDate: null }; }); } dom.learningHeader.textContent = `章节 ${id} - 新词考核`; break; }
-                case 'practice': { session.chapterId = id; dom.learningHeader.textContent = `章节 ${id} - 巩固练习`; break; }
-                case 'review': { if(!resume) session.words = getDailyReviewWords(); if(session.words.length === 0) { showModal('无需复习', '今天没有需要复习的单词，休息一下吧！', 'icon-thumb-up'); return; } dom.learningHeader.textContent = '每日复习'; break; }
-                case 'test': { session.chapterId = id; if(!resume) session.words = [...appData.chapters.find(c => c.id === id).words].sort(() => 0.5 - Math.random()).slice(0, 10); dom.learningHeader.textContent = `章节 ${id} - 测试`; break; }
-                case 'challenge': { const cid = id; dom.learningHeader.textContent = `阶段挑战 (Ch. ${cid-2}-${cid})`; const pool = appData.chapters.filter(c => c.id > cid - 3 && c.id <= cid).flatMap(c => c.words); if(!resume) session.words = [...pool].sort(() => 0.5 - Math.random()).slice(0, 20); break; }
-                case 'challengeReview': { const count = id; dom.learningHeader.textContent = `挑战模式 (${count}词)`; const pool = appData.chapters.filter(c => c.isUnlocked).flatMap(c => c.words); if (pool.length === 0) { showModal('题库为空', '题库中没有已解锁的单词！', 'icon-sentiment-dissatisfied'); return; } if (pool.length < count) { showModal('单词不足', `题库中已解锁的单词不足 ${count} 个！`, 'icon-sentiment-dissatisfied'); return; } if(!resume) session.words = [...pool].sort(() => 0.5 - Math.random()).slice(0, count); break; }
-                case 'redoWrong': { const all = appData.chapters.flatMap(c => c.words); if(!resume) session.words = appData.wrongWords.map(wid => all.find(w => w.id === wid)).filter(Boolean); if (session.words.length === 0) { showModal('没有错题', '太棒了！当前没有需要重做的错题。', 'icon-celebration'); return; } dom.learningHeader.textContent = '重做错题'; break; }
+                case 'learnNew': {
+                    session.chapterId = id;
+                    if(!resume) {
+                        const c = appData.chapters.find(ch => ch.id === id);
+                        session.words = c.words.filter(w => !w.firstLearnedDate);
+                        session.words.forEach(w => {
+                            session.tempWordStats[w.id] = {...w, correct: 0, wrong: 0, mastery: 0, firstLearnedDate: null };
+                        });
+                    }
+                    dom.learningHeader.textContent = `章节 ${id} - 新词考核`;
+                    break;
+                }
+                case 'practice': {
+                    session.chapterId = id;
+                    dom.learningHeader.textContent = `章节 ${id} - 巩固练习`;
+                    break;
+                }
+                case 'review': {
+                    if(!resume) session.words = getDailyReviewWords();
+                    if(session.words.length === 0) {
+                        showModal('无需复习', '今天没有需要复习的单词，休息一下吧！', 'icon-thumb-up');
+                        return;
+                    }
+                    dom.learningHeader.textContent = '每日复习';
+                    break;
+                }
+                case 'test': {
+                    session.chapterId = id;
+                    if(!resume) session.words = [...appData.chapters.find(c => c.id === id).words].sort(() => 0.5 - Math.random()).slice(0, 10);
+                    dom.learningHeader.textContent = `章节 ${id} - 测试`;
+                    break;
+                }
+                case 'challenge': {
+                    const cid = id;
+                    dom.learningHeader.textContent = `阶段挑战 (Ch. ${cid-2}-${cid})`;
+                    const pool = appData.chapters.filter(c => c.id > cid - 3 && c.id <= cid).flatMap(c => c.words);
+                    if(!resume) session.words = [...pool].sort(() => 0.5 - Math.random()).slice(0, 20);
+                    break;
+                }
+                case 'challengeReview': {
+                    const count = id;
+                    dom.learningHeader.textContent = `挑战模式 (${count}词)`;
+                    const pool = appData.chapters.filter(c => c.isUnlocked).flatMap(c => c.words);
+                    if (pool.length === 0) { showModal('题库为空', '题库中没有已解锁的单词！', 'icon-sentiment-dissatisfied'); return; }
+                    if (pool.length < count) { showModal('单词不足', `题库中已解锁的单词不足 ${count} 个！`, 'icon-sentiment-dissatisfied'); return; }
+                    if(!resume) session.words = [...pool].sort(() => 0.5 - Math.random()).slice(0, count);
+                    break;
+                }
+                case 'redoWrong': {
+                    const all = appData.chapters.flatMap(c => c.words);
+                    if(!resume) session.words = appData.wrongWords.map(wid => all.find(w => w.id === wid)).filter(Boolean);
+                    if (session.words.length === 0) { showModal('没有错题', '太棒了！当前没有需要重做的错题。', 'icon-celebration'); return; }
+                    dom.learningHeader.textContent = '重做错题';
+                    break;
+                }
             }
             if (!session.words || session.words.length === 0) if (type !== 'practice') return;
             if(session.type === 'learnNew') saveSession();
             switchView('learning-view');
             displayNextCard();
         };
+
         const displayNextCard = () => {
             if (session.type !== 'practice' && session.currentIndex >= session.words.length) { endSession(); return; }
-            if (session.type === 'practice') { session.currentWord = selectPracticeWord(session.chapterId); if (!session.currentWord) { endSession(); return; } } 
-            else { session.currentWord = session.words[session.currentIndex]; }
+            if (session.type === 'practice') {
+                session.currentWord = selectPracticeWord(session.chapterId);
+                if (!session.currentWord) { endSession(); return; }
+            } else {
+                session.currentWord = session.words[session.currentIndex];
+            }
+
             dom.flashcard.classList.add('card-exit');
             setTimeout(() => {
                 updateLearningStats();
                 const isChineseQ = Math.random() > 0.5;
-                dom.questionText.textContent = isChineseQ ? `${session.currentWord.translation}` : session.currentWord.word;
-                dom.phoneticText.textContent = isChineseQ ? `(${session.currentWord.pos})` : (session.currentWord.phonetic || '');
+
+                dom.questionText.textContent = isChineseQ ? '请选择对应单词' : session.currentWord.word;
+                dom.phoneticText.textContent = isChineseQ ? '' : (session.currentWord.phonetic || '');
+                dom.questionMeanings.innerHTML = isChineseQ
+                    ? renderMeaningHtml(session.currentWord.meanings || [{ pos: session.currentWord.pos || '', meaning: session.currentWord.translation || '' }])
+                    : '';
+
                 dom.speakBtn.classList.toggle('hidden', isChineseQ);
+
                 let pool = [];
                 switch(session.type) {
-                    case 'learnNew': case 'practice': case 'test': pool = appData.chapters.find(c => c.id === session.chapterId)?.words || []; break;
-                    case 'challenge': pool = appData.chapters.filter(c => c.id > session.id - 3 && c.id <= session.id).flatMap(c => c.words); break;
-                    case 'challengeReview': case 'review': case 'redoWrong': pool = session.words; break;
-                    default: pool = appData.chapters.flatMap(c => c.words); break;
+                    case 'learnNew':
+                    case 'practice':
+                    case 'test':
+                        pool = appData.chapters.find(c => c.id === session.chapterId)?.words || [];
+                        break;
+                    case 'challenge':
+                        pool = appData.chapters.filter(c => c.id > session.id - 3 && c.id <= session.id).flatMap(c => c.words);
+                        break;
+                    case 'challengeReview':
+                    case 'review':
+                    case 'redoWrong':
+                        pool = session.words;
+                        break;
+                    default:
+                        pool = appData.chapters.flatMap(c => c.words);
+                        break;
                 }
-                generateOptions(session.currentWord, isChineseQ ? 'word' : 'translation', pool);
+
+                generateOptions(session.currentWord, pool, isChineseQ);
                 dom.flashcard.classList.remove('card-exit');
                 dom.nextWordBtn.classList.add('hidden');
             }, 250);
         };
+
         const handleOptionClick = (e) => {
-            const btn = e.target.closest('.option-btn'); if (!btn || btn.disabled) return;
-            const answer = btn.textContent, isEngQ = dom.phoneticText.textContent === (session.currentWord.phonetic || ''), correctAns = isEngQ ? session.currentWord.translation : session.currentWord.word, wasCorrect = answer === correctAns;
-            if (wasCorrect) { if (session.type === 'redoWrong') appData.wrongWords = appData.wrongWords.filter(id => id !== session.currentWord.id); } 
-            else { if (!appData.wrongWords.includes(session.currentWord.id)) appData.wrongWords.push(session.currentWord.id); }
-            dom.optionsContainer.querySelectorAll('.option-btn').forEach(b => { b.disabled = true; if (b.textContent === correctAns) b.classList.add('correct-answer'); });
-            if (wasCorrect) { btn.classList.add('correct-answer'); session.correct++; } 
-            else { btn.classList.add('wrong-answer'); dom.nextWordBtn.classList.remove('hidden'); }
+            const btn = e.target.closest('.option-btn');
+            if (!btn || btn.disabled) return;
+
+            const selectedWordId = btn.dataset.wordId;
+            const correctWordId = session.currentWord.id;
+            const wasCorrect = selectedWordId === correctWordId;
+
+            if (wasCorrect) {
+                if (session.type === 'redoWrong') {
+                    appData.wrongWords = appData.wrongWords.filter(id => id !== session.currentWord.id);
+                }
+            } else {
+                if (!appData.wrongWords.includes(session.currentWord.id)) {
+                    appData.wrongWords.push(session.currentWord.id);
+                }
+            }
+
+            dom.optionsContainer.querySelectorAll('.option-btn').forEach(b => {
+                b.disabled = true;
+                if (b.dataset.wordId === correctWordId) {
+                    b.classList.add('correct-answer');
+                }
+            });
+
+            if (wasCorrect) {
+                btn.classList.add('correct-answer');
+                session.correct++;
+            } else {
+                btn.classList.add('wrong-answer');
+                dom.nextWordBtn.classList.remove('hidden');
+            }
+
             updateWordStats(session.currentWord, wasCorrect);
-            session.total++; if (session.type !== 'practice') session.currentIndex++;
-            if (session.type === 'learnNew') saveSession(); else saveAppData();
-            updateLearningStats(); if (wasCorrect) setTimeout(displayNextCard, 1200);
+            session.total++;
+            if (session.type !== 'practice') session.currentIndex++;
+
+            if (session.type === 'learnNew') saveSession();
+            else saveAppData();
+
+            updateLearningStats();
+
+            if (wasCorrect) {
+                setTimeout(displayNextCard, 1200);
+            }
         };
+
         const endSession = (force = false) => {
             dom.backToMainBtn.disabled = false;
             let title, message, iconId;
             const accuracy = session.total > 0 ? (session.correct / session.total * 100) : 0;
             switch(session.type) {
-                case 'learnNew': const chL = appData.chapters.find(c => c.id === session.id); if (!force && accuracy >= appData.settings.unlockThreshold.learn) { title = '新词考核通过！'; message = `恭喜！正确率: ${accuracy.toFixed(1)}%。`; iconId = 'icon-celebration'; session.words.forEach(w => { const rw = chL.words.find(wd => wd.id === w.id); if(rw) Object.assign(rw, session.tempWordStats[w.id]); }); if (chL) { chL.learnProgress = (chL.words.filter(w => w.lastReviewDate).length / chL.words.length) * 100; const c = chL.words.reduce((s, w) => s + w.correct, 0), w = chL.words.reduce((s, w) => s + w.wrong, 0); chL.learnAccuracy = (c + w) > 0 ? (c / (c + w) * 100) : 0; } saveAppData(); } else if (!force) { title = '再接再厉！'; message = `正确率: ${accuracy.toFixed(1)}%，未达要求。记录已重置。`; iconId = 'icon-sentiment-dissatisfied'; } clearSession(); break;
-                case 'practice': title = `练习结束`; message = `本次练习了 ${session.total} 个词，正确率: ${accuracy.toFixed(1)}%。`; iconId = 'icon-thumb-up'; break;
-                case 'review': title = '复习完成'; message = `本次复习了 ${session.total} 个单词，正确率: ${accuracy.toFixed(1)}%。`; iconId = 'icon-school'; break;
-                case 'test': const chT = appData.chapters.find(c => c.id === session.id); const isTestDone = session.currentIndex >= session.words.length; if (isTestDone && accuracy >= appData.settings.unlockThreshold.test) { title = '测试通过！'; iconId = 'icon-check-circle'; message = `恭喜你以 ${accuracy.toFixed(1)}% 的高正确率通过测试！`; chT.isCompleted = true; const nextId = session.id + 1; if (nextId > appData.chapters.length) message += `\n\n你已完成所有章节！`; else if ((nextId - 1) % 3 === 0) message += `\n\n请完成阶段挑战以解锁新章节。`; } else { title = '测试未通过'; iconId = 'icon-sentiment-dissatisfied'; if (!isTestDone && force) message = '您中途退出了测试，本次测试无效。'; else message = `本次正确率 ${accuracy.toFixed(1)}%，未达要求。`; } saveAppData(); break;
-                case 'challenge': if (accuracy >= appData.settings.unlockThreshold.challenge) { title = '挑战成功！'; iconId = 'icon-trophy'; message = `恭喜！正确率 ${accuracy.toFixed(1)}%！`; if (!appData.completedChallenges.includes(session.id)) appData.completedChallenges.push(session.id); } else { title = '挑战失败'; iconId = 'icon-sentiment-dissatisfied'; message = `本次正确率 ${accuracy.toFixed(1)}%，未达要求。`; } saveAppData(); break;
-                case 'challengeReview': title = '复习结束'; iconId = 'icon-flag'; message = `本次挑战了 ${session.total} 个单词，正确率: ${accuracy.toFixed(1)}%。`; break;
-                case 'redoWrong': title = '错题重做完成'; message = `本次练习了 ${session.total} 个错题，正确率: ${accuracy.toFixed(1)}%。`; iconId = 'icon-edit'; saveAppData(); break;
+                case 'learnNew':
+                    const chL = appData.chapters.find(c => c.id === session.id);
+                    if (!force && accuracy >= appData.settings.unlockThreshold.learn) {
+                        title = '新词考核通过！';
+                        message = `恭喜！正确率: ${accuracy.toFixed(1)}%。`;
+                        iconId = 'icon-celebration';
+                        session.words.forEach(w => {
+                            const rw = chL.words.find(wd => wd.id === w.id);
+                            if(rw) Object.assign(rw, session.tempWordStats[w.id]);
+                        });
+                        if (chL) {
+                            chL.learnProgress = (chL.words.filter(w => w.lastReviewDate).length / chL.words.length) * 100;
+                            const c = chL.words.reduce((s, w) => s + w.correct, 0), w = chL.words.reduce((s, w) => s + w.wrong, 0);
+                            chL.learnAccuracy = (c + w) > 0 ? (c / (c + w) * 100) : 0;
+                        }
+                        saveAppData();
+                    } else if (!force) {
+                        title = '再接再厉！';
+                        message = `正确率: ${accuracy.toFixed(1)}%，未达要求。记录已重置。`;
+                        iconId = 'icon-sentiment-dissatisfied';
+                    }
+                    clearSession();
+                    break;
+                case 'practice':
+                    title = `练习结束`;
+                    message = `本次练习了 ${session.total} 个词，正确率: ${accuracy.toFixed(1)}%。`;
+                    iconId = 'icon-thumb-up';
+                    break;
+                case 'review':
+                    title = '复习完成';
+                    message = `本次复习了 ${session.total} 个单词，正确率: ${accuracy.toFixed(1)}%。`;
+                    iconId = 'icon-school';
+                    break;
+                case 'test':
+                    const chT = appData.chapters.find(c => c.id === session.id);
+                    const isTestDone = session.currentIndex >= session.words.length;
+                    if (isTestDone && accuracy >= appData.settings.unlockThreshold.test) {
+                        title = '测试通过！';
+                        iconId = 'icon-check-circle';
+                        message = `恭喜你以 ${accuracy.toFixed(1)}% 的高正确率通过测试！`;
+                        chT.isCompleted = true;
+                        const nextId = session.id + 1;
+                        if (nextId > appData.chapters.length) message += `\n\n你已完成所有章节！`;
+                        else if ((nextId - 1) % 3 === 0) message += `\n\n请完成阶段挑战以解锁新章节。`;
+                    } else {
+                        title = '测试未通过';
+                        iconId = 'icon-sentiment-dissatisfied';
+                        if (!isTestDone && force) message = '您中途退出了测试，本次测试无效。';
+                        else message = `本次正确率 ${accuracy.toFixed(1)}%，未达要求。`;
+                    }
+                    saveAppData();
+                    break;
+                case 'challenge':
+                    if (accuracy >= appData.settings.unlockThreshold.challenge) {
+                        title = '挑战成功！';
+                        iconId = 'icon-trophy';
+                        message = `恭喜！正确率 ${accuracy.toFixed(1)}%！`;
+                        if (!appData.completedChallenges.includes(session.id)) appData.completedChallenges.push(session.id);
+                    } else {
+                        title = '挑战失败';
+                        iconId = 'icon-sentiment-dissatisfied';
+                        message = `本次正确率 ${accuracy.toFixed(1)}%，未达要求。`;
+                    }
+                    saveAppData();
+                    break;
+                case 'challengeReview':
+                    title = '复习结束';
+                    iconId = 'icon-flag';
+                    message = `本次挑战了 ${session.total} 个单词，正确率: ${accuracy.toFixed(1)}%。`;
+                    break;
+                case 'redoWrong':
+                    title = '错题重做完成';
+                    message = `本次练习了 ${session.total} 个错题，正确率: ${accuracy.toFixed(1)}%。`;
+                    iconId = 'icon-edit';
+                    saveAppData();
+                    break;
             }
             if(session && session.total > 0 && !force) showModal(title, message, iconId);
             clearSession();
             switchView('main-view');
         };
 
-        // ======== 辅助函数 ========
-        const updateWordStats = (word, isCorrect) => { let wu, cu; if (session.type === 'learnNew') wu = session.tempWordStats[word.id]; else { for (const ch of appData.chapters) { const f = ch.words.find(w => w.id === word.id); if(f){ wu=f; cu=ch; break; } } } if(!wu) return; if (!wu.firstLearnedDate) wu.firstLearnedDate = new Date().toISOString().split('T')[0]; wu.lastReviewDate = new Date().toISOString(); if (isCorrect) wu.correct++; else wu.wrong++; wu.mastery = isCorrect ? Math.min(reviewIntervals.length - 1, (wu.mastery || 0) + 1) : Math.max(0, (wu.mastery || 0) - 1); const i = reviewIntervals[wu.mastery]; wu.nextReviewDate = new Date(new Date().setDate(new Date().getDate() + i)).toISOString(); if (cu) { cu.learnProgress = (cu.words.filter(w => w.lastReviewDate).length / cu.words.length) * 100; const c = cu.words.reduce((s, w) => s + w.correct, 0), w = cu.words.reduce((s, w) => s + w.wrong, 0); cu.learnAccuracy = (c + w) > 0 ? (c / (c + w) * 100) : 0; }};
-        const generateOptions = (correctWord, optionType, wordPool) => { const co = correctWord[optionType]; let opts = [co]; while (opts.length < 4 && opts.length < wordPool.length) { let rw = wordPool[Math.floor(Math.random() * wordPool.length)]; if (rw && rw[optionType] && !opts.includes(rw[optionType])) opts.push(rw[optionType]); } opts.sort(() => Math.random() - 0.5); dom.optionsContainer.innerHTML = opts.map(opt => `<button class="option-btn btn-tonal">${opt}<span class="state-layer"></span></button>`).join(''); dom.optionsContainer.querySelectorAll('.option-btn').forEach(b => b.disabled = false); };
+        const updateWordStats = (word, isCorrect) => {
+            let wu, cu;
+            if (session.type === 'learnNew') wu = session.tempWordStats[word.id];
+            else {
+                for (const ch of appData.chapters) {
+                    const f = ch.words.find(w => w.id === word.id);
+                    if(f){ wu=f; cu=ch; break; }
+                }
+            }
+            if(!wu) return;
+            if (!wu.firstLearnedDate) wu.firstLearnedDate = new Date().toISOString().split('T')[0];
+            wu.lastReviewDate = new Date().toISOString();
+            if (isCorrect) wu.correct++; else wu.wrong++;
+            wu.mastery = isCorrect ? Math.min(reviewIntervals.length - 1, (wu.mastery || 0) + 1) : Math.max(0, (wu.mastery || 0) - 1);
+            const i = reviewIntervals[wu.mastery];
+            wu.nextReviewDate = new Date(new Date().setDate(new Date().getDate() + i)).toISOString();
+            if (cu) {
+                cu.learnProgress = (cu.words.filter(w => w.lastReviewDate).length / cu.words.length) * 100;
+                const c = cu.words.reduce((s, w) => s + w.correct, 0), w = cu.words.reduce((s, w) => s + w.wrong, 0);
+                cu.learnAccuracy = (c + w) > 0 ? (c / (c + w) * 100) : 0;
+            }
+        };
+
+        const generateOptions = (correctWord, wordPool, isChineseQ) => {
+            const options = [correctWord];
+            const usedIds = new Set([correctWord.id]);
+
+            while (options.length < 4 && options.length < wordPool.length) {
+                const rw = wordPool[Math.floor(Math.random() * wordPool.length)];
+                if (rw && !usedIds.has(rw.id)) {
+                    usedIds.add(rw.id);
+                    options.push(rw);
+                }
+            }
+
+            options.sort(() => Math.random() - 0.5);
+
+            dom.optionsContainer.innerHTML = options.map(wordObj => {
+                const meanings = wordObj.meanings || [{ pos: wordObj.pos || '', meaning: wordObj.translation || '' }];
+
+                const mainText = isChineseQ
+                    ? escapeHtml(wordObj.word)
+                    : escapeHtml(buildDisplayMeaning(meanings));
+
+                const subHtml = isChineseQ
+                    ? `<div class="option-sub">${renderMeaningHtml(meanings)}</div>`
+                    : '';
+
+                return `
+                    <button class="option-btn btn-tonal" data-word-id="${escapeHtml(wordObj.id)}">
+                        <span class="state-layer"></span>
+                        <div class="option-main">${mainText}</div>
+                        ${subHtml}
+                    </button>
+                `;
+            }).join('');
+
+            dom.optionsContainer.querySelectorAll('.option-btn').forEach(b => b.disabled = false);
+        };
+
         const processAndChunkWords = async (text) => {
             try {
                 const newAppData = processTextToAppData(text, appData.settings);
@@ -2501,23 +2918,27 @@ zone	[zəʊn]	n.	地区，地带；区域;
             }
         };
 
-        const getDailyReviewWords = () => { const t = new Date().setHours(0,0,0,0); return appData.chapters.flatMap(c => c.isUnlocked ? c.words : []).filter(w => w.nextReviewDate && new Date(w.nextReviewDate) <= t).sort((a,b) => new Date(a.nextReviewDate) - new Date(b.nextReviewDate)); };
-        const selectPracticeWord = (chapterId) => { const c = appData.chapters.find(ch => ch.id === chapterId); if (!c || c.words.length === 0) return null; const h = c.words.filter(w => w.wrong > w.correct).sort((a,b) => b.wrong - a.wrong); if (h.length > 0 && Math.random() < 0.4) return h[0]; return c.words.sort((a,b) => (a.mastery || 0) - (b.mastery || 0))[0]; };
-        /**
-         * 应用指定的主题，并更新所有相关的UI元素（背景、状态栏、切换按钮图标）。
-         * 这是主题设置的“单一数据源”。
-         * @param {string} theme - 'light' 或 'dark'
-         */
-        const applyTheme = (theme) => {
-            if (!theme) return; // 安全检查
+        const getDailyReviewWords = () => {
+            const t = new Date().setHours(0,0,0,0);
+            return appData.chapters.flatMap(c => c.isUnlocked ? c.words : []).filter(w => w.nextReviewDate && new Date(w.nextReviewDate) <= t).sort((a,b) => new Date(a.nextReviewDate) - new Date(b.nextReviewDate));
+        };
 
-            // 步骤 1: 更新 body 的 class 来切换 CSS 变量
+        const selectPracticeWord = (chapterId) => {
+            const c = appData.chapters.find(ch => ch.id === chapterId);
+            if (!c || c.words.length === 0) return null;
+            const h = c.words.filter(w => w.wrong > w.correct).sort((a,b) => b.wrong - a.wrong);
+            if (h.length > 0 && Math.random() < 0.4) return h[0];
+            return c.words.sort((a,b) => (a.mastery || 0) - (b.mastery || 0))[0];
+        };
+
+        const isCordova = () => !!window.cordova;
+
+        const applyTheme = (theme) => {
+            if (!theme) return;
             dom.body.className = theme === 'dark' ? 'dark-mode' : 'light-mode';
 
-            // 步骤 2: 更新所有主题切换按钮的图标
-            // 因为每个视图都有一个按钮，所以需要用 querySelectorAll
             const themeToggleButtons = document.querySelectorAll('.theme-toggle-btn');
-            const newIconId = theme === 'dark' ? '#icon-light-mode' : '#icon-dark-mode'; // 深色模式显示太阳，浅色模式显示月亮
+            const newIconId = theme === 'dark' ? '#icon-light-mode' : '#icon-dark-mode';
 
             themeToggleButtons.forEach(btn => {
                 const useElement = btn.querySelector('use');
@@ -2526,7 +2947,6 @@ zone	[zəʊn]	n.	地区，地带；区域;
                 }
             });
 
-		    // 只在 Cordova 环境下设置状态栏
 		    if (isCordova() && window.StatusBar) {
 		        if (theme === 'dark') {
 		            StatusBar.backgroundColorByHexString("#1c1b1f");
@@ -2538,40 +2958,40 @@ zone	[zəʊn]	n.	地区，地带；区域;
 		    }
         };
 
+        const updateLearningStats = () => {
+            let pt, pp = 0;
+            const acc = session.total > 0 ? (session.correct / session.total * 100).toFixed(1) : '0.0';
+            if (session.type === 'practice') {
+                const c = appData.chapters.find(ch => ch.id === session.chapterId);
+                pp = c ? c.learnProgress || 0 : 0;
+                pt = `巩固练习中...`;
+            } else {
+                pp = session.words.length > 0 ? (session.currentIndex / session.words.length) * 100 : 0;
+                pt = `进度: ${session.currentIndex}/${session.words.length}`;
+            }
+            dom.learningProgress.style.width = `${pp}%`;
+            dom.learningStats.textContent = `${pt} | 本次正确率: ${acc}%`;
+        };
 
-        const updateLearningStats = () => { let pt, pp = 0; const acc = session.total > 0 ? (session.correct / session.total * 100).toFixed(1) : '0.0'; if (session.type === 'practice') { const c = appData.chapters.find(ch => ch.id === session.chapterId); pp = c ? c.learnProgress || 0 : 0; pt = `巩固练习中...`; } else { pp = session.words.length > 0 ? (session.currentIndex / session.words.length) * 100 : 0; pt = `进度: ${session.currentIndex}/${session.words.length}`; } dom.learningProgress.style.width = `${pp}%`; dom.learningStats.textContent = `${pt} | 本次正确率: ${acc}%`; };
-		// ======== [新增] 全局状态变量，用于跟踪 TTS 引擎是否已成功预热 ========
 		let isTtsInitialized = false;
 
-		/**
-		 * 最终版、健壮的语音朗读函数
-		 * 使用新版 Promise 风格的 TTS 插件，并包含初始化检查和用户引导。
-		 * @param {string} text - 需要朗读的文本
-		 */
 		const playSpeech = async (text) => {
-			if (!text) {
-				return; // 如果文本为空，则不执行任何操作
-			}
+			if (!text) return;
 
-			// 步骤 1: 检查 TTS 插件是否存在
 			if (!window.TTS) {
 				console.log("Cordova TTS 插件未找到，回退到 Web Speech API。");
 				tryWebSpeechAPI(text);
 				return;
 			}
 
-			// 步骤 2: 只在第一次调用时初始化 TTS 插件
 			if (!isTtsInitialized) {
 				console.log('TTS 引擎首次调用，开始初始化...');
 				try {
-					// 尝试发送一个空的 speak 请求来初始化插件
-					// 这个请求会触发插件去检查系统TTS设置
 					await TTS.speak('');
 					console.log('TTS 引擎已初始化。');
-					isTtsInitialized = true; // 标记初始化完成
+					isTtsInitialized = true;
 				} catch (error) {
 					console.error('TTS 初始化失败:', error);
-					// [关键优化] 引导用户去设置
 					const confirmed = await showConfirmation(
 						'语音引擎初始化失败',
 						'您的手机可能没有设置默认的语音引擎。\n\n是否跳转到系统“文本转语音”设置页面进行配置？',
@@ -2586,7 +3006,6 @@ zone	[zəʊn]	n.	地区，地带；区域;
 				}
 			}
 
-			// 步骤 3: 朗读文本
 			try {
 				console.log(`正在朗读: "${text}"`);
 				await TTS.speak({
@@ -2597,17 +3016,12 @@ zone	[zəʊn]	n.	地区，地带；区域;
 				console.log('朗读成功！');
 			} catch (error) {
 				console.error(`朗读文本 "${text}" 失败:`, error);
-				// 如果初始化成功但朗读失败，也可能是引擎问题
 				showModal('朗读失败', `语音引擎在朗读时出错，请检查系统设置或重启应用。错误: ${error}`, 'icon-sentiment-dissatisfied');
 			}
 		};
 
-		/**
-		 * [新增] 辅助函数：打开系统的TTS设置页面
-		 */
 		const openTtsSettings = () => {
 			if (window.cordova && window.cordova.plugins && window.cordova.plugins.settings) {
-				// 使用 cordova-open-native-settings 插件打开特定页面
 				window.cordova.plugins.settings.open("tts", () => {
 					console.log('已打开TTS设置页面');
 				}, () => {
@@ -2615,7 +3029,6 @@ zone	[zəʊn]	n.	地区，地带；区域;
 					showModal('打开失败', '无法自动跳转，请手动前往手机“设置” -> “辅助功能” -> “文本转语音(TTS)”进行配置。', 'icon-info');
 				});
 			} else {
-				// 插件不存在时的后备方案
 				showModal('无法跳转', '请手动前往手机“设置” -> “辅助功能” -> “文本转语音(TTS)”进行配置。', 'icon-info');
 			}
 		};
@@ -2625,9 +3038,7 @@ zone	[zəʊn]	n.	地区，地带；区域;
 				if (!('speechSynthesis' in window)) {
 					throw new Error('浏览器不支持 SpeechSynthesis API');
 				}
-				// 取消上一次可能未完成的朗读
-				speechSynthesis.cancel(); 
-				
+				speechSynthesis.cancel();
 				const utterance = new SpeechSynthesisUtterance(text);
 				utterance.lang = 'en-US';
 				utterance.rate = 1.0;
@@ -2638,15 +3049,14 @@ zone	[zəʊn]	n.	地区，地带；区域;
 				showModal('朗读失败', '您的设备或浏览器不支持语音合成功能。', 'icon-sentiment-dissatisfied');
 			}
 		};
-		const showModal = (title, message, iconId) => { dom.modalTitle.textContent = title; dom.modalMessage.innerHTML = message.replace(/\n/g, '<br>'); dom.modalIcon.innerHTML = `<svg class="icon" style="width:32px; height:32px;"><use href="#${iconId}"/></svg>`; dom.resultModal.classList.add('active'); };
- 
-		// [新增] ===================================================================
-		// ======================= 更新检测模块 ============================
-		// ===================================================================
 
-		/**
-		 * 比较两个版本号 (例如 "1.10.0" > "1.2.0")
-		 */
+		const showModal = (title, message, iconId) => {
+            dom.modalTitle.textContent = title;
+            dom.modalMessage.innerHTML = message.replace(/\n/g, '<br>');
+            dom.modalIcon.innerHTML = `<svg class="icon" style="width:32px; height:32px;"><use href="#${iconId}"/></svg>`;
+            dom.resultModal.classList.add('active');
+        };
+
 		const isNewerVersion = (newVer, currentVer) => {
 			const newParts = newVer.split('.').map(Number);
 			const currentParts = currentVer.split('.').map(Number);
@@ -2660,11 +3070,7 @@ zone	[zəʊn]	n.	地区，地带；区域;
 			return false;
 		};
 
-		/**
-		 * 检查应用更新 (每次启动都提醒)
-		 */
 		const checkForUpdates = async () => {
-		    // 浏览器环境也检查更新
 		    try {
 		        const response = await fetch(GITHUB_API_URL);
 		        if (!response.ok) {
@@ -2672,8 +3078,8 @@ zone	[zəʊn]	n.	地区，地带；区域;
 		        }
 		        const latestRelease = await response.json();
 		        const latestVersion = latestRelease.tag_name.replace(/^v/, '');
-		        const currentVersion = '1.4.0'; // 从 package.json 或 config.xml 获取
-		        
+		        const currentVersion = '1.4.0';
+
 		        console.log(`当前版本: ${currentVersion}, 最新版本: ${latestVersion}`);
 		        if (isNewerVersion(latestVersion, currentVersion)) {
 		            latestReleaseInfo = {
@@ -2687,17 +3093,12 @@ zone	[zəʊn]	n.	地区，地带；区域;
 		    }
 		};
 
-		/**
-		 * 显示更新提示模态框
-		 */
 		const showUpdatePrompt = () => {
 			if (!latestReleaseInfo) return;
 			dom.updateModalText.textContent = `检测到新版本 v${latestReleaseInfo.version}，建议您立即更新以获得最佳体验和新功能。`;
 			dom.updateModal.classList.add('active');
 		};
 
- 
-        // --- [新增] 显示确认模态框的函数，返回一个 Promise ---
         const showConfirmation = (title, message, iconId = 'icon-info', confirmText = '确认', cancelText = '取消') => {
             return new Promise(resolve => {
                 dom.confirmationModalTitle.textContent = title;
@@ -2720,7 +3121,6 @@ zone	[zəʊn]	n.	地区，地带；区域;
                     resolve(false);
                 };
 
-                // 使用 { once: true } 确保事件只触发一次后自动移除，防止内存泄漏
                 dom.confirmBtnYes.addEventListener('click', handleYes, { once: true });
                 dom.confirmBtnNo.addEventListener('click', handleNo, { once: true });
 
@@ -2732,16 +3132,24 @@ zone	[zəʊn]	n.	地区，地带；区域;
         };
 
         const closeSettingsModal = () => dom.settingsModal.classList.remove('active');
-        const startTimeTracker = () => { const t = new Date().toISOString().split('T')[0]; let d = JSON.parse(localStorage.getItem(TIME_TRACKER_DB_NAME) || '{}'); if (d.date !== t) d = { date: t, totalTime: 0 }; if (timeTrackingInterval) clearInterval(timeTrackingInterval); timeTrackingInterval = setInterval(() => { d.totalTime += 1; localStorage.setItem(TIME_TRACKER_DB_NAME, JSON.stringify(d)); }, 1000); };
-      
-		// 修改 exportData 函数
+
+        const startTimeTracker = () => {
+            const t = new Date().toISOString().split('T')[0];
+            let d = JSON.parse(localStorage.getItem(TIME_TRACKER_DB_NAME) || '{}');
+            if (d.date !== t) d = { date: t, totalTime: 0 };
+            if (timeTrackingInterval) clearInterval(timeTrackingInterval);
+            timeTrackingInterval = setInterval(() => {
+                d.totalTime += 1;
+                localStorage.setItem(TIME_TRACKER_DB_NAME, JSON.stringify(d));
+            }, 1000);
+        };
+
 		const exportData = async () => {
 		    if (!appData) {
 		        showModal("没有数据", "没有可导出的数据！", "icon-sentiment-dissatisfied");
 		        return;
 		    }
-		    
-		    // 浏览器环境使用 Blob 下载
+
 		    try {
 		        const dataStr = JSON.stringify(appData, null, 2);
 		        const blob = new Blob([dataStr], { type: 'application/json' });
@@ -2787,8 +3195,8 @@ zone	[zəʊn]	n.	地区，地带；区域;
                     importedData.id = APP_DATA_ID;
                     appData = importedData;
                     await saveAppData();
-                    await showModal("导入成功", "进度导入成功！应用即将刷新以应用新数据。", "icon-check-circle");
-                    window.location.reload();
+                    showModal("导入成功", "进度导入成功！应用即将刷新以应用新数据。", "icon-check-circle");
+                    setTimeout(() => window.location.reload(), 700);
                 } catch (error) {
                     console.error("导入失败:", error);
                     showModal("导入失败", `导入数据时发生错误：<br>${error.message}`, "icon-sentiment-dissatisfied");
@@ -2799,27 +3207,26 @@ zone	[zəʊn]	n.	地区，地带；区域;
             reader.readAsText(file);
         };
 
-        // ======== 事件监听器 ========
         const setupEventListeners = () => {
             dom.navButtons.forEach(btn => btn.addEventListener('click', () => switchView(btn.id.replace('nav-', '') + '-view')));
-            
-            document.querySelectorAll('.theme-toggle-btn').forEach(btn => btn.addEventListener('click', () => { 
-                appData.settings.theme = appData.settings.theme === 'light' ? 'dark' : 'light'; 
-                applyTheme(appData.settings.theme); 
-                saveAppData(); 
+
+            document.querySelectorAll('.theme-toggle-btn').forEach(btn => btn.addEventListener('click', () => {
+                appData.settings.theme = appData.settings.theme === 'light' ? 'dark' : 'light';
+                applyTheme(appData.settings.theme);
+                saveAppData();
             }));
-            
+
             document.querySelectorAll('.open-settings-btn').forEach(btn => btn.addEventListener('click', () => dom.settingsModal.classList.add('active')));
-            
+
             dom.redoWrongWordsBtn.addEventListener('click', () => startSession('redoWrong'));
-            
+
             dom.chapterList.addEventListener('click', async (e) => {
-                const item = e.target.closest('.list-item'); 
+                const item = e.target.closest('.list-item');
                 if (!item || item.classList.contains('locked')) return;
-                
+
                 const type = item.dataset.type;
                 const id = parseInt(item.dataset.id);
-                
+
                 if (type === 'chapter') {
                     const chapter = appData.chapters.find(c => c.id === id);
                     if (session && session.type === 'learnNew' && session.chapterId === id) {
@@ -2832,18 +3239,18 @@ zone	[zəʊn]	n.	地区，地带；区域;
                         }
                         return;
                     }
-                    
+
                     if (chapter.isCompleted) {
                         const practice = await showConfirmation(`章节 ${id} 已通过`, '该章节已通过测试。您想开始巩固复习吗？', 'icon-school', '开始复习', '取消');
                         if (practice) startSession('practice', id);
                         return;
                     }
-                    
+
                     if (chapter.words.some(w => !w.firstLearnedDate)) {
                         startSession('learnNew', id);
                         return;
                     }
-                    
+
                     if (chapter.learnAccuracy >= appData.settings.unlockThreshold.learn) {
                         const takeTest = await showConfirmation(`章节 ${id} 已学完`, '恭喜！您已达到本章的测试资格。\n\n- “开始测试”进行章节测验\n- “继续巩固”可再次练习', 'icon-flag', '开始测试', '继续巩固');
                         if (takeTest) {
@@ -2853,23 +3260,23 @@ zone	[zəʊn]	n.	地区，地带；区域;
                         }
                         return;
                     }
-                    
+
                     startSession('practice', id);
-                } 
+                }
                 else if (type === 'challenge') {
                     startSession('challenge', id);
                 }
             });
-            
-            dom.startChallengeReviewBtn.addEventListener('click', () => { 
-                const count = parseInt(dom.challengeReviewCount.value); 
+
+            dom.startChallengeReviewBtn.addEventListener('click', () => {
+                const count = parseInt(dom.challengeReviewCount.value);
                 if (count >= 5 && count <= 100) {
                     startSession('challengeReview', count);
                 } else {
                     showModal('输入无效', '请输入 5 到 100 之间的有效题数。', 'icon-sentiment-dissatisfied');
                 }
             });
-            
+
             dom.exportDataBtn.addEventListener('click', exportData);
             dom.importDataBtn.addEventListener('click', () => dom.importDataFile.click());
             dom.importDataFile.addEventListener('change', importData);
@@ -2877,101 +3284,99 @@ zone	[zəʊn]	n.	地区，地带；区域;
             if (dom.importBtn) {
                 dom.importBtn.addEventListener('click', () => dom.importFile.click());
             }
-          
+
             if (dom.importFile) {
-                dom.importFile.addEventListener('change', async (e) => { 
-                    const f = e.target.files[0]; 
+                dom.importFile.addEventListener('change', async (e) => {
+                    const f = e.target.files[0];
                     if (!f) return;
-                    
+
                     const confirmed = await showConfirmation('确认导入新词表？', '此操作将清除所有当前的学习进度和章节。建议您先在设置中“导出进度”进行备份。', 'icon-info', '确认导入');
                     if (confirmed) {
-                        const r = new FileReader(); 
-                        r.onload = (ev) => processAndChunkWords(ev.target.result); 
-                        r.readAsText(f); 
+                        const r = new FileReader();
+                        r.onload = (ev) => processAndChunkWords(ev.target.result);
+                        r.readAsText(f);
                     }
-                    e.target.value = ''; 
+                    e.target.value = '';
                 });
             }
 
             if (dom.saveSettingsBtn) {
-                dom.saveSettingsBtn.addEventListener('click', () => { 
-                    const s = parseInt(dom.chapterSizeInput.value); 
-                    if (s >= 10 && s <= 100) { 
-                        appData.settings.chapterSize = s; 
-                        saveAppData(); 
+                dom.saveSettingsBtn.addEventListener('click', () => {
+                    const s = parseInt(dom.chapterSizeInput.value);
+                    if (s >= 10 && s <= 100) {
+                        appData.settings.chapterSize = s;
+                        saveAppData();
                         showModal('设置已保存', '新设置将在下次导入词表时生效。', 'icon-check-circle');
                     } else {
                         showModal('输入无效', '请输入 10 到 100 之间的数字。', 'icon-sentiment-dissatisfied');
                     }
                 });
             }
-          
+
             dom.clearDataBtn.addEventListener('click', async () => {
                 const confirmed = await showConfirmation(
-                    '确认清除所有数据？', 
+                    '确认清除所有数据？',
                     '此操作无法撤销，将永久删除您所有的学习进度、错题本和设置。',
                     'icon-info',
                     '坚决清除',
                     '我再想想'
                 );
-                if(confirmed){ 
-                    await dbHelper.deleteDB(); 
-                    localStorage.removeItem(SESSION_DB_NAME); 
-                    localStorage.removeItem(TIME_TRACKER_DB_NAME); 
-                    await showModal('操作完成', '所有数据已被清除。应用即将重启。', 'icon-check-circle');
-                    window.location.reload(); 
+                if(confirmed){
+                    await dbHelper.deleteDB();
+                    localStorage.removeItem(SESSION_DB_NAME);
+                    localStorage.removeItem(TIME_TRACKER_DB_NAME);
+                    showModal('操作完成', '所有数据已被清除。应用即将重启。', 'icon-check-circle');
+                    setTimeout(() => window.location.reload(), 700);
                 }
             });
-            
+
             dom.settingsCloseBtn.addEventListener('click', () => dom.settingsModal.classList.remove('active'));
-            
+
             dom.startReviewBtn.addEventListener('click', () => startSession('review'));
-            
+
             dom.backToMainBtn.addEventListener('click', async () => {
                 if (session && session.type === 'learnNew') {
                     const confirmed = await showConfirmation('退出学习？', '正在进行新词考核，退出将自动保存您的进度。确定要退出吗？', 'icon-info', '退出');
                     if (confirmed) {
-                        saveSession(); 
+                        saveSession();
                         switchView('main-view');
                     }
                     return;
                 }
-                
+
                 const nonInterruptible = ['test', 'challenge'];
                 if (session && nonInterruptible.includes(session.type)) {
                     const confirmed = await showConfirmation('确认退出？', '测试或挑战中途退出将不会记录成绩。确定要退出吗？', 'icon-info', '退出');
                     if (!confirmed) return;
                 }
-                
+
                 endSession(true);
             });
-            
+
             dom.endSessionManuallyBtn.addEventListener('click', () => endSession(false));
-            
             dom.optionsContainer.addEventListener('click', handleOptionClick);
-            
             dom.nextWordBtn.addEventListener('click', displayNextCard);
-            
+
 			dom.speakBtn.addEventListener('click', () => {
 				if (session && session.currentWord) {
 					playSpeech(session.currentWord.word);
 				}
 			});
-            
+
             dom.modalCloseBtn.addEventListener('click', () => dom.resultModal.classList.remove('active'));
-            
+
             dom.tosTextContent.addEventListener('scroll', () => {
                 const el = dom.tosTextContent;
                 if (el.scrollTop + el.clientHeight >= el.scrollHeight - 5) {
                     dom.tosAgreeBtn.disabled = false;
                 }
             });
- 
+
             dom.tosAgreeBtn.addEventListener('click', () => {
                 localStorage.setItem('tos_agreed_v1', 'true');
                 dom.tosModal.classList.remove('active');
             });
-            
+
 			dom.tosDisagreeBtn.addEventListener('click', () => {
 				if (navigator.app && navigator.app.exitApp) {
 					console.log('正在通过Cordova API退出应用...');
@@ -2981,95 +3386,74 @@ zone	[zəʊn]	n.	地区，地带；区域;
                     showModal('无法退出', '在浏览器环境中无法自动关闭页面。请手动关闭此标签页。', 'icon-info');
 				}
 			});
-			// [新增] 更新模态框按钮事件
+
 			dom.updateLaterBtn.addEventListener('click', () => {
 				dom.updateModal.classList.remove('active');
 			});
 
 			dom.updateNowBtn.addEventListener('click', () => {
 				if (latestReleaseInfo && latestReleaseInfo.url) {
-					// '_system' 会在手机的默认浏览器中打开
 					window.open(latestReleaseInfo.url, '_system');
 				}
 				dom.updateModal.classList.remove('active');
 			});
         };
 
-		/**
-		 * 当 Cordova 设备准备好后，添加返回键的监听器
-		 */
 		function onDeviceReadyForBackButton() {
 			console.log('Device is ready. Overriding back button behavior.');
 			document.addEventListener('backbutton', onBackKeyDown, false);
 		}
 
-		/**
-		 * 当用户按下返回键时触发此函数
-		 * @param {Event} e 事件对象
-		 */
 		function onBackKeyDown(e) {
-			if (!isCordova()) return; // 浏览器环境不拦截返回键
-			// 阻止默认行为（直接退出应用）
+			if (!isCordova()) return;
 			e.preventDefault();
 
-			// 逻辑 1: 检查是否有任何活动的模态框
-			// 你的 CSS 使用 .modal-overlay.active 来显示模态框，这非常棒！
 			const activeModal = document.querySelector('.modal-overlay.active');
 			if (activeModal) {
 				console.log("Back button pressed: Closing active modal ->", activeModal.id);
-				// 特殊处理：如果是不可取消的TOS协议，则不做任何事
 				if (activeModal.id === 'tos-modal' && !localStorage.getItem('tos_agreed_v1')) {
-					return; 
+					return;
 				}
 				activeModal.classList.remove('active');
-				return; // 处理完毕，退出函数
+				return;
 			}
 
-			// 逻辑 2: 检查是否在学习界面
-			// 我们直接利用你已经写好的返回按钮逻辑，这是最稳妥的方式
 			if (dom.learningView.classList.contains('active')) {
 				console.log("Back button pressed: In learning view, triggering back button click.");
-				dom.backToMainBtn.click(); // 模拟点击返回按钮，复用你已有的确认逻辑
-				return; // 处理完毕，退出函数
+				dom.backToMainBtn.click();
+				return;
 			}
 
-			// 逻辑 3: 如果在主界面，则弹出确认退出对话框
-			// 只有在以上条件都不满足时，才会执行到这里
-			console.log("Back button pressed: On a main screen, showing exit confirmation dialog.");
-			navigator.notification.confirm(
-				'您确定要退出二轮斩词酱吗？', // 消息
-				onConfirmExit,              // 按下按钮后的回调函数
-				'退出应用',                 // 标题
-				['退出', '取消']            // 按钮标签数组
-			);
+			if (navigator.notification && navigator.notification.confirm) {
+				console.log("Back button pressed: On a main screen, showing exit confirmation dialog.");
+				navigator.notification.confirm(
+					'您确定要退出二轮斩词酱吗？',
+					onConfirmExit,
+					'退出应用',
+					['退出', '取消']
+				);
+			} else {
+                showConfirmation('退出应用', '您确定要退出二轮斩词酱吗？', 'icon-info', '退出', '取消').then(ok => {
+                    if (ok && navigator.app && navigator.app.exitApp) navigator.app.exitApp();
+                });
+            }
 		}
 
-		/**
-		 * 退出确认对话框的回调函数
-		 * @param {number} buttonIndex 用户点击的按钮索引 (1-based, '退出'是1, '取消'是2)
-		 */
 		function onConfirmExit(buttonIndex) {
 			if (buttonIndex === 1) {
-				navigator.app.exitApp(); // 调用 Cordova API 安全退出应用
+				navigator.app.exitApp();
 			}
 		}
 
-		
 		function bootstrapApp() {
 			if (window.cordova) {
 				console.log('检测到Cordova环境，等待deviceready...');
 				document.addEventListener('deviceready', async () => {
 					console.log('Device is ready. Starting initialization.');
-					
-                    // --- [在此处添加一行代码] ---
-                    onDeviceReadyForBackButton(); 
-                    // --- [添加结束] ---
-
+                    onDeviceReadyForBackButton();
 					await init();
 					console.log('Initialization finished.');
-					
 					setTimeout(checkForUpdates, 2000);
-
 				}, false);
 			} else {
 				console.log('未检测到Cordova环境，立即执行init。');
@@ -3078,8 +3462,6 @@ zone	[zəʊn]	n.	地区，地带；区域;
 			}
 		}
 
-
-        // ======== 启动APP ========
         bootstrapApp();
     });
 	</script>
