@@ -1,6 +1,9 @@
 name: Build Pure HTML Version
 
 on:
+  push:
+    tags:
+      - 'v*'
   workflow_dispatch:
 
 permissions:
@@ -35,11 +38,11 @@ jobs:
           # 复制 index.html 到 dist 目录
           cp src/index.html dist/index.html
           
-          # 移除 cordova.js 引用
-          sed -i 's/<script src="cordova.js"><\/script>//g' dist/index.html
+          # 【修正】使用 | 作为分隔符，避免与 / 冲突
+          sed -i 's|<script src="cordova.js"></script>||g' dist/index.html
           
           # 更新版本号
-          sed -i "s/版本: [0-9.]\+/版本: ${{ steps.get_version.outputs.VERSION }}/g" dist/index.html
+          sed -i "s|版本：[0-9.]\+|版本：${{ steps.get_version.outputs.VERSION }}|g" dist/index.html
           
           # 复制字体文件
           mkdir -p dist/fonts
@@ -56,9 +59,9 @@ jobs:
         run: |
           cat > dist/manifest.json << 'EOF'
           {
-            "name": "高二轮词酱",
+            "name": "二轮斩词酱",
             "short_name": "斩词酱",
-            "description": "以互动的方式快速背完二轮1500单词",
+            "description": "以互动的方式快速背完二轮 1500 单词",
             "start_url": "/index.html",
             "display": "standalone",
             "background_color": "#fef7ff",
@@ -105,13 +108,13 @@ jobs:
 
       - name: Add PWA links to HTML
         run: |
-          # 在 </head> 前添加 PWA 相关标签
+          # 【修正】使用 | 作为分隔符
           sed -i 's|</head>|<link rel="manifest" href="/manifest.json">\n<meta name="theme-color" content="#3f51b5">\n<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js")}</script></head>|g' dist/index.html
 
       - name: Create README
         run: |
           cat > dist/README.md << EOF
-          # 高考斩词酱 - 浏览器版本
+          # 二轮斩词酱 - 浏览器版本
 
           ## 使用方法
           1. 直接打开 index.html 文件
@@ -172,8 +175,8 @@ jobs:
         run: |
           if [ "${{ needs.build.result }}" == "success" ]; then
             echo "✅ 构建成功！"
-            echo "📦 下载链接: https://github.com/${{ github.repository }}/releases"
-            echo "🌐 在线访问: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+            echo "📦 下载链接：https://github.com/${{ github.repository }}/releases"
+            echo "🌐 在线访问：https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
           else
             echo "❌ 构建失败，请检查日志"
             exit 1
